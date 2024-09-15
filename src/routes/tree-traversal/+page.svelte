@@ -47,12 +47,12 @@
 </script>
 
 <main>
-  <h1>Tree Traversal</h1>
+  <h1>Downstream Traversal</h1>
 
   <div class="main-page-link">
     <div class="grid-item">
       <a href="/">
-        <span class="item-text">Go to Main Page</span>
+        <span class="item-text">Go to Resource Calculator</span>
       </a>
     </div>
   </div>

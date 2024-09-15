@@ -73,7 +73,7 @@
 	<div class="tree-traversal-link">
 		<div class="grid-item">
 			<a href="/tree-traversal">
-				<span class="item-text">Go to Tree Traversal</span>
+				<span class="item-text">Go to Downstream Traversal</span>
 			</a>
 		</div>
 	</div>
@@ -415,5 +415,5 @@
 		display: block;
 		padding: 5px 0;
 	}
-	
+
 </style>
