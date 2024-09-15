@@ -3,48 +3,56 @@
 		"Input": "Pig Iron",
 		"Catalyst 1": "Coke",
 		"Catalyst 2": "Calx Powder",
-		"Output": "Grain Steel"
+		"Output": "Grain Steel",
+		"Image Path": "grain_steel.jpg"
 	},
 	{
 		"Input": "Grain Steel",
 		"Catalyst 1": "Coal",
 		"Catalyst 2": "Saburra Powder",
-		"Output": "Steel"
+		"Output": "Steel",
+		"Image Path": "steel.jpg"
 	},
 	{
 		"Input": "Cuprum",
 		"Catalyst 1": "Bleck",
 		"Catalyst 2": "Saburra Powder",
-		"Output": "Bron"
+		"Output": "Bron",
+		"Image Path": "bron.jpg"
 	},
 	{
 		"Input": "Cuprum",
 		"Catalyst 1": "Calamine",
 		"Catalyst 2": "Saburra Powder",
-		"Output": "Messing"
+		"Output": "Messing",
+		"Image Path": "messing.jpg"
 	},
 	{
 		"Input": "Messing",
 		"Catalyst 1": "Almine",
 		"Catalyst 2": "Gem Metal",
-		"Output": "Tindremic Messing"
+		"Output": "Tindremic Messing",
+		"Image Path": "tindremic_messing.jpg"
 	},
 	{
 		"Input": "Grain Steel",
 		"Catalyst 1": "Almine",
 		"Catalyst 2": "Acronite",
-		"Output": "Cronite"
+		"Output": "Cronite",
+		"Image Path": "cronite.jpg"
 	},
 	{
 		"Input": "Tungsteel",
 		"Catalyst 1": "Cronite",
 		"Catalyst 2": "Sanguinite",
-		"Output": "Oghmium"
+		"Output": "Oghmium",
+		"Image Path": "oghmium.jpg"
 	},
 	{
 		"Input": "Grain Steel",
 		"Catalyst 1": "Lupium",
 		"Catalyst 2": "Granum Powder",
-		"Output": "Tungsteel"
+		"Output": "Tungsteel",
+		"Image Path": "tungsteel.jpg"
 	}
 ]
