@@ -2,6 +2,7 @@
 
 import norscaData from './norsca.json';
 import refiningData from './refining.json';
+import vendorData from './vendor.json';
 
 interface Resource {
 	name: string;
@@ -42,6 +43,11 @@ interface RefiningData {
 	'Catalyst 1': string;
 	'Catalyst 2': string;
 	Output: string;
+}
+
+interface VendorData {
+	Catalyst: string;
+	Price: number;
 }
 
 const resources: { [key: string]: Resource } = {};
@@ -155,17 +161,25 @@ function calculateBaseMaterials(
 	targetAmount: number,
 	removedTools: Set<string>,
 	removedResources: Set<string>,
-	isOghmir: boolean
+	isOghmir: boolean,
+	useVendor: boolean
 ): { [key: string]: number } {
 	const baseMaterials: { [key: string]: number } = {};
 	const intermediateProducts: { [key: string]: number } = {};
 	const stack: [string, number][] = [[targetResource, targetAmount]];
 	const OGHMIR = isOghmir ? 1.03 : 1.0;
 
+	const vendorItems = new Map(vendorData.map((item: VendorData) => [item.Catalyst, item.Price]));
+
 	while (stack.length > 0) {
 		const [resourceName, amount] = stack.pop()!;
 
 		if (['Granum', 'Calx', 'Saburra', 'Tephra', 'Gabore'].includes(resourceName)) {
+			baseMaterials[resourceName] = (baseMaterials[resourceName] || 0) + amount;
+			continue;
+		}
+
+		if (useVendor && vendorItems.has(resourceName)) {
 			baseMaterials[resourceName] = (baseMaterials[resourceName] || 0) + amount;
 			continue;
 		}
@@ -197,7 +211,6 @@ function calculateBaseMaterials(
 		);
 
 		stack.push([bestStep.input.name, inputAmount]);
-
 		for (const catalyst of bestStep.catalysts) {
 			const catalystAmount = Math.ceil(
 				inputAmount * catalyst.factor * (bestStep.tool !== 'Refining Oven' ? OGHMIR : 1)
@@ -218,18 +231,20 @@ function calculateBaseMaterials(
 
 	return baseMaterials;
 }
-
 function getFullProductionChain(
 	targetResource: string,
 	targetAmount: number,
 	removedTools: Set<string>,
 	removedResources: Set<string>,
-	isOghmir: boolean
+	isOghmir: boolean,
+	useVendor: boolean
 ): [string, number, string, [string, number][], string, number][] {
 	const chain: [string, number, string, [string, number][], string, number][] = [];
 	const stack: [string, number][] = [[targetResource, targetAmount]];
 	const intermediateProducts: { [key: string]: number } = {};
 	const OGHMIR = isOghmir ? 1.03 : 1.0;
+
+	const vendorItems = new Map(vendorData.map((item: VendorData) => [item.Catalyst, item.Price]));
 
 	while (stack.length > 0) {
 		const [resourceName, amount] = stack.pop()!;
@@ -238,6 +253,12 @@ function getFullProductionChain(
 			['Granum', 'Calx', 'Saburra', 'Tephra', 'Gabore'].includes(resourceName) ||
 			!resources[resourceName]
 		) {
+			continue;
+		}
+
+		if (useVendor && vendorItems.has(resourceName)) {
+			const price = vendorItems.get(resourceName)! * amount;
+			chain.push([resourceName, amount, 'Vendor', [], 'Buy', price]);
 			continue;
 		}
 
@@ -295,17 +316,17 @@ function getFullProductionChain(
 
 function combineSteps(
 	chain: [string, number, string, [string, number][], string, number][]
-): [{ [key: string]: number }, number, string, [string, number][], string][] {
-	const combinedSteps: { [key: string]: [{ [key: string]: number }, [string, number][], number] } =
+): [{ [key: string]: number }, number, string, [string, number][], string, number][] {
+	const combinedSteps: { [key: string]: [{ [key: string]: number }, [string, number][], number, number] } =
 		{};
 
 	for (const [output, amount, inputResource, catalysts, tool, efficiency] of chain) {
 		const key = `${inputResource}|${tool}`;
 		if (!combinedSteps[key]) {
-			combinedSteps[key] = [{}, [], 0];
+			combinedSteps[key] = [{}, [], 0, 0];
 		}
 
-		const [outputs, combinedCatalysts, maxEfficiency] = combinedSteps[key];
+		const [outputs, combinedCatalysts, maxEfficiency, totalOutput] = combinedSteps[key];
 		outputs[output] = (outputs[output] || 0) + amount;
 
 		for (const [catalyst, cAmount] of catalysts) {
@@ -318,35 +339,49 @@ function combineSteps(
 		}
 
 		combinedSteps[key][2] = Math.max(maxEfficiency, efficiency);
+		combinedSteps[key][3] += amount;
 	}
 
-	return Object.entries(combinedSteps).map(([key, [outputs, catalysts, efficiency]]) => {
+	return Object.entries(combinedSteps).map(([key, [outputs, catalysts, efficiency, totalOutput]]) => {
 		const [inputResource, tool] = key.split('|');
-		const totalOutput = Object.values(outputs).reduce((sum, val) => sum + val, 0);
 		return [outputs, totalOutput, inputResource, catalysts, tool, efficiency];
 	});
 }
 
+function cuprumToGold(cuprumAmount: number): string {
+    const goldCoins = cuprumAmount / 10000;
+    return `${goldCoins.toFixed(3)} Gold`;
+}
+
 function formatProductionSteps(
-	chain: [string, number, string, [string, number][], string, number][]
+    chain: [string, number, string, [string, number][], string, number][],
+    useVendor: boolean
 ): string {
-	const combinedChain = combineSteps(chain);
-	let result = 'Production steps:\n';
+    const combinedChain = combineSteps(chain);
+    let result = 'Production steps:\n';
 
-	for (const [outputs, totalOutput, inputResource, catalysts, tool, efficiency] of combinedChain) {
-		const catalystStr =
-			catalysts.length > 0
-				? ` with ${catalysts.map(([name, amount]) => `${amount} ${name}`).join(' and ')}`
-				: '';
-		const inputAmount = Math.ceil(totalOutput / efficiency);
-		const outputStr = Object.entries(outputs)
-			.map(([resource, amount]) => `${amount} ${resource}`)
-			.join(', ');
-		result += `To make ${outputStr}:\n`;
-		result += `  Use ${inputAmount} ${inputResource} in a ${tool}${catalystStr}\n\n`;
-	}
+    for (const [outputs, totalOutput, inputResource, catalysts, tool, efficiency] of combinedChain) {
+        if (useVendor && tool === 'Buy') {
+            const outputStr = Object.entries(outputs)
+                .map(([resource, amount]) => `${amount} ${resource}`)
+                .join(', ');
+            const goldAmount = cuprumToGold(efficiency);
+            result += `To make ${outputStr}: Buy from Vendor for ${goldAmount}\n\n`;
+        } else {
+            const catalystStr =
+                catalysts.length > 0
+                    ? ` with ${catalysts.map(([name, amount]) => `${amount} ${name}`).join(' and ')}`
+                    : '';
+            const inputAmount = Math.ceil(totalOutput / efficiency);
+            const outputStr = Object.entries(outputs)
+                .map(([resource, amount]) => `${amount} ${resource}`)
+                .join(', ');
+            result += `To make ${outputStr}:\n`;
+            result += `  Use ${inputAmount} ${inputResource} in a ${tool}${catalystStr}\n\n`;
+        }
+    }
 
-	return result;
+    return result;
 }
 
 export function calculateResources(
@@ -354,7 +389,8 @@ export function calculateResources(
 	targetAmount: number,
 	isOghmir: boolean = false,
 	removedTools: string[] = [],
-	removedResources: string[] = []
+	removedResources: string[] = [],
+	useVendor: boolean = false
 ): string {
 	try {
 		const removedToolsSet = new Set(removedTools);
@@ -365,14 +401,16 @@ export function calculateResources(
 			targetAmount,
 			removedToolsSet,
 			removedResourcesSet,
-			isOghmir
+			isOghmir,
+			useVendor
 		);
 		const chain = getFullProductionChain(
 			targetResource,
 			targetAmount,
 			removedToolsSet,
 			removedResourcesSet,
-			isOghmir
+			isOghmir,
+			useVendor
 		);
 
 		let result = `To produce ${targetAmount} ${targetResource}, you need:\n`;
@@ -380,7 +418,7 @@ export function calculateResources(
 			result += `  ${amount} ${resource} --> ${(amount / 10000).toFixed(4)} Stacks\n`;
 		}
 		result += '\n';
-		result += formatProductionSteps(chain);
+		result += formatProductionSteps(chain, useVendor);
 
 		return result;
 	} catch (error) {

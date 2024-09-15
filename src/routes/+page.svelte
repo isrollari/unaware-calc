@@ -6,6 +6,7 @@
 	let resourceName = '';
 	let quantity = 1;
 	let isOghmir = false;
+	let useVendor = false;
 	let removedTools: Set<string> = new Set();
 	let removedResources: Set<string> = new Set();
 	let result = '';
@@ -17,7 +18,7 @@
 	const toolOptions = [...new Set(norscaData.map((item) => item.Tool))].sort();
 
 	// Specific resources for removal
-	const removableResources = ['Kimurite', 'Cerulite', 'Tephra'];
+	const removableResources = ['Kimurite', 'Cerulite', 'Tephra', 'Bor'];
 
 	// Create a map of Output to Image Path
 	const resourceImageMap = new Map(refiningData.map((item) => [item.Output, item['Image Path']]));
@@ -50,7 +51,8 @@
 			quantity,
 			isOghmir,
 			Array.from(removedTools),
-			Array.from(removedResources)
+			Array.from(removedResources),
+			useVendor
 		);
 	}
 
@@ -116,9 +118,10 @@
 			/>
 		</div>
 	</div>
-	<div class="input-group-oghmir">
-		<label>Is Oghmir:</label>
-		<div class="grid-select oghmir-grid">
+	<div class="input-group-options">
+		<div class="option-item">
+		<label>Click if you are an Oghmir:</label>
+			<div class="grid-select option-grid">
 			<div
 					class="grid-item"
 				class:selected={isOghmir}
@@ -128,6 +131,20 @@
 				</div>
 		</div>
 	</div>
+
+		<div class="option-item">
+			<label>Use Vendor Materials:</label>
+			<div class="grid-select option-grid">
+				<div
+					class="grid-item"
+					class:selected={useVendor}
+					on:click={() => useVendor = !useVendor}
+				>
+					<span class="item-text">Vendor</span>
+				</div>
+		</div>
+	</div>
+		</div>
 
 	<div class="input-group">
 		<label>Removed Tools:</label>
@@ -139,10 +156,10 @@
 					on:click={() => toggleTool(tool)}
 				>
 					<span class="item-text">{tool}</span>
-				</div>
-			{/each}
 		</div>
+			{/each}
 	</div>
+		</div>
 
 	<div class="input-group">
 		<label>Removed Resources:</label>
@@ -154,7 +171,7 @@
 					on:click={() => toggleResource(resource)}
 				>
 					<span class="item-text">{resource}</span>
-		</div>
+				</div>
 			{/each}
 		</div>
 	</div>
@@ -184,11 +201,6 @@
 		padding: 2rem;
 	}
 
-	.oghmir-grid {
-        grid-template-columns: 1fr;
-		margin-bottom: 1rem;
-    }
-
 	h1 {
 		color: #ffc72c;
 		text-align: center;
@@ -214,16 +226,6 @@
 		border-radius: 4px;
 		background-color: #2e2e2e;
 		color: #ffffff;
-	}
-
-	.checkbox label {
-		display: flex;
-		align-items: center;
-		cursor: pointer;
-	}
-
-	.checkbox input[type='checkbox'] {
-		margin-right: 0.5rem;
 	}
 
 	button {
@@ -260,18 +262,6 @@
 		word-break: break-word;
 	}
 
-	select[multiple] {
-		height: 100px;
-		overflow-y: auto;
-	}
-
-	small {
-		display: block;
-		margin-top: 0.25rem;
-		color: #ffc72c;
-		font-size: 0.8rem;
-	}
-
 	.grid-select {
 		display: grid;
 		gap: 10px;
@@ -289,7 +279,7 @@
 	}
 
 	.resource-remove-grid {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		grid-template-rows: 1fr;
 	}
 
@@ -331,6 +321,7 @@
 		padding-top: 5px;
 		position: relative;
 	}
+
 	.tool-grid .grid-item.selected .item-text::after,
 	.resource-remove-grid .grid-item.selected .item-text::after {
 		content: '';
@@ -416,4 +407,22 @@
 		padding: 5px 0;
 	}
 
+	.input-group-options {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 1rem;
+	}
+
+	.option-item {
+		flex: 1;
+		margin-right: 1rem;
+	}
+
+	.option-item:last-child {
+		margin-right: 0;
+	}
+
+	.option-grid {
+		grid-template-columns: 1fr;
+	}
 </style>
