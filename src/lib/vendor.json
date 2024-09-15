@@ -1,0 +1,37 @@
+[
+	{
+		"Catalyst": "Rock Oil",
+		"Price": 200,
+		"Image Path": "rock_oil.jpg"
+	},
+	{
+		"Catalyst": "Calamine",
+		"Price": 50,
+		"Image Path": "calamine.jpg"
+	},
+    {
+		"Catalyst": "Ichor",
+		"Price": 160,
+		"Image Path": "ichor.jpg"
+	},
+    {
+		"Catalyst": "Nitre",
+		"Price": 120,
+		"Image Path": "nitre.jpg"
+	},
+    {
+		"Catalyst": "Sulfur",
+		"Price": 120,
+		"Image Path": "sulfur.jpg"
+	},
+    {
+		"Catalyst": "Fuming Salt",
+		"Price": 150,
+		"Image Path": "fuming_salt.jpg"
+	},
+    {
+		"Catalyst": "Dragon Salt",
+		"Price": 150,
+		"Image Path": "dragon_salt.jpg"
+	}
+]
