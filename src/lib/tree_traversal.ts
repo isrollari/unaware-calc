@@ -35,9 +35,20 @@ export function getResourceByName(name: string): Resource {
     return resources[name];
   }
 
+function parseNameAndAmount(input: string): [Resource, number] {
+  const parts = input.split(' ');
+  const amountStr = parts[parts.length - 1].replace(/[()]/g, '');
+  let amount = parseInt(amountStr);
+  if (amountStr.endsWith('k')) {
+    amount *= 1000;
+  }
+  const name = parts.slice(0, -1).join(' ');
+  return [getResourceByName(name), amount];
+}
+
 function parseExtractionData(data: NorscaData[]) {
   data.forEach((d) => {
-    const inputResource = getResourceByName(d.Input.split(' ')[0]);
+    const [inputResource, inputAmount] = parseNameAndAmount(d.Input);
     const step: ProcessingStep = {
       input: inputResource,
       tool: d.Tool,
@@ -46,24 +57,20 @@ function parseExtractionData(data: NorscaData[]) {
     };
 
     if (d.Catalyst) {
-      const [catalystName, catalystAmountRaw] = d.Catalyst.split(' ');
-      const catalystAmount = parseInt(catalystAmountRaw.replace(/[()]/g, ''));
-      const catalystResource = getResourceByName(catalystName);
+      const [catalystResource, catalystAmount] = parseNameAndAmount(d.Catalyst);
       step.catalysts.push({
         resource: catalystResource,
-        factor: catalystAmount / 10000,
+        factor: catalystAmount / inputAmount,
       });
     }
 
     for (let i = 1; i <= 5; i++) {
       const output = d[`Output ${i}` as keyof NorscaData];
       if (output) {
-        const [outputName, outputAmountRaw] = output.split(' ');
-        const outputAmount = parseInt(outputAmountRaw.replace(/[()]/g, ''));
-        const outputResource = getResourceByName(outputName);
+        const [outputResource, outputAmount] = parseNameAndAmount(output);
         step.outputs.push({
           resource: outputResource,
-          factor: outputAmount / 10000,
+          factor: outputAmount / inputAmount,
         });
       }
     }
@@ -107,7 +114,7 @@ export function traverseDownstream(
 
   ra.resource.downstream.forEach((s) => {
     const catalysts = s.catalysts
-      .map((c) => `${Math.ceil(ra.amount * c.factor * OGHMIR)} ${c.resource.name}`)
+      .map((c) => `${Math.ceil(ra.amount * c.factor * (s.tool !== 'Refining Oven' ? OGHMIR : 1))} ${c.resource.name}`)
       .join(' and ');
 
     result += `${'    '.repeat(depth)}| ${ra.amount} ${s.input.name} in ${s.tool} with ${
@@ -115,7 +122,7 @@ export function traverseDownstream(
     }:\n`;
 
     s.outputs.forEach((e) => {
-      const outputAmount = Math.floor(e.factor * ra.amount * OGHMIR);
+      const outputAmount = Math.floor(e.factor * ra.amount * (s.tool !== 'Refining Oven' ? OGHMIR : 1));
       result += `${'    '.repeat(depth)} -> ${outputAmount} ${e.resource.name}\n`;
 
       result += traverseDownstream(
