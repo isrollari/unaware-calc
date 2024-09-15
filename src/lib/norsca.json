@@ -1,0 +1,872 @@
+[
+	{
+		"Input": "Granum (10k)",
+		"Catalyst": null,
+		"Tool": "Crusher",
+		"Output 1": "Amarantum (882)",
+		"Output 2": "Blood Ore (770)",
+		"Output 3": "Flakestone (140)",
+		"Output 4": "Granum Powder (2940)",
+		"Output 5": null
+	},
+	{
+		"Input": "Granum (10k)",
+		"Catalyst": "Calx Powder (715)",
+		"Tool": "Attractor",
+		"Output 1": null,
+		"Output 2": "Blood Ore (1980)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calx (10k)",
+		"Catalyst": null,
+		"Tool": "Crusher",
+		"Output 1": "Calspar (360)",
+		"Output 2": "Malachite (891)",
+		"Output 3": "Flakestone (180)",
+		"Output 4": "Coal (2151)",
+		"Output 5": "Calx Powder (1361)"
+	},
+	{
+		"Input": "Calx (10k)",
+		"Catalyst": "Water (1000)",
+		"Tool": "Grinder",
+		"Output 1": "Calspar (2000)",
+		"Output 2": "Malachite (528)",
+		"Output 3": "Flakestone (36)",
+		"Output 4": "Coal (1140)",
+		"Output 5": "Calx Powder (2058)"
+	},
+	{
+		"Input": "Calx (10k)",
+		"Catalyst": "Water (1000)",
+		"Tool": "Furnace",
+		"Output 1": "Calspar (2560)",
+		"Output 2": "Malachite (506)",
+		"Output 3": "Flakestone (28)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Saburra (10k)",
+		"Catalyst": null,
+		"Tool": "Crusher",
+		"Output 1": "Bleckblende (1584)",
+		"Output 2": "Malachite (1584)",
+		"Output 3": "Jadeite (128)",
+		"Output 4": "Pyrite (32)",
+		"Output 5": "Saburra Powder (2000)"
+	},
+	{
+		"Input": "Saburra (10k)",
+		"Catalyst": "Water (1000)",
+		"Tool": "Grinder",
+		"Output 1": "Bleckblende (1901)",
+		"Output 2": "Malachite (950)",
+		"Output 3": "Jadeite (16)",
+		"Output 4": null,
+		"Output 5": "Saburra Powder (4275)"
+	},
+	{
+		"Input": "Saburra (10k)",
+		"Catalyst": "Coal (535)",
+		"Tool": "Attractor",
+		"Output 1": null,
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": "Pyrite (120)",
+		"Output 5": null
+	},
+	{
+		"Input": "Cerulite (10k)",
+		"Catalyst": null,
+		"Tool": "Crusher",
+		"Output 1": "Azurite (2200)",
+		"Output 2": "Malachite (5760)",
+		"Output 3": null,
+		"Output 4": "Pyrite (80)",
+		"Output 5": "Suburra Powder (500)"
+	},
+	{
+		"Input": "Ritualist (10k)",
+		"Catalyst": null,
+		"Tool": "Furnace",
+		"Output 1": "Unholy Ash (105)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Gabore (10k)",
+		"Catalyst": null,
+		"Tool": "Crusher",
+		"Output 1": "Galbinum (750)",
+		"Output 2": "Blood Ore (510)",
+		"Output 3": "Nyx (36)",
+		"Output 4": null,
+		"Output 5": "Gabore Powder (2340)"
+	},
+	{
+		"Input": "Gabore (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Grinder",
+		"Output 1": "Galbinum (1050)",
+		"Output 2": "Blood Ore (226)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": "Gabore Powder (4168)"
+	},
+	{
+		"Input": "Gabore (10k)",
+		"Catalyst": "Coke (385)",
+		"Tool": "Furnace",
+		"Output 1": "Galbinum (243)",
+		"Output 2": "Blood Ore (595)",
+		"Output 3": "Nyx (168)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Tephra (10k)",
+		"Catalyst": null,
+		"Tool": "Crusher",
+		"Output 1": "Galbinum (1200)",
+		"Output 2": "Cinnabar (144)",
+		"Output 3": "Magmum (288)",
+		"Output 4": "Red Bleckblende (312)",
+		"Output 5": "Volcanic Ash (2220)"
+	},
+	{
+		"Input": "Tephra (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Grinder",
+		"Output 1": "Galbinum (1200)",
+		"Output 2": "Cinnabar (90)",
+		"Output 3": "Magmum (259)",
+		"Output 4": "Red Bleckblende (807)",
+		"Output 5": "Volcanic Ash (2753)"
+	},
+	{
+		"Input": "Tephra (10k)",
+		"Catalyst": "Water (1000)",
+		"Tool": "Grinder",
+		"Output 1": "Galbinum (1900)",
+		"Output 2": "Cinnabar (88)",
+		"Output 3": "Magmum (259)",
+		"Output 4": "Red Bleckblende (774)",
+		"Output 5": "Volcanic Ash (2960)"
+	},
+	{
+		"Input": "Tephra (10k)",
+		"Catalyst": "Calx Powder (715)",
+		"Tool": "Greater Nat",
+		"Output 1": "Galbinum (250)",
+		"Output 2": "Cinnabar (36)",
+		"Output 3": "Magmum (122)",
+		"Output 4": "Red Bleckblende (2600)",
+		"Output 5": "Volcanic Ash (148)"
+	},
+	{
+		"Input": "Tephra (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Greater Nat",
+		"Output 1": "Galbinum (1250)",
+		"Output 2": "Cinnabar (94)",
+		"Output 3": "Magmum (36)",
+		"Output 4": "Red Bleckblende (1976)",
+		"Output 5": "Volcanic Ash (326)"
+	},
+	{
+		"Input": "Tephra (10k)",
+		"Catalyst": "Calx Powder (715)",
+		"Tool": "Furnace",
+		"Output 1": "Galbinum (299)",
+		"Output 2": "Cinnabar (54)",
+		"Output 3": "Magmum (259)",
+		"Output 4": "Red Bleckblende (2080)",
+		"Output 5": "Volcanic Ash (444)"
+	},
+	{
+		"Input": "Kimurite (10k)",
+		"Catalyst": null,
+		"Tool": "Crusher",
+		"Output 1": "Waterstone (3800)",
+		"Output 2": null,
+		"Output 3": "Magmum (3520)",
+		"Output 4": "Pyrite (200)",
+		"Output 5": null
+	},
+	{
+		"Input": "Blood Ore (10k)",
+		"Catalyst": "Coke (385)",
+		"Tool": "Furnace",
+		"Output 1": "Pig Iron (4000)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Blood Ore (10k)",
+		"Catalyst": "Coke (385)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Pig Iron (5000)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Amarantum (10k)",
+		"Catalyst": null,
+		"Tool": "Crusher",
+		"Output 1": "Waterstone (900)",
+		"Output 2": "Electrum (180)",
+		"Output 3": "Cuprum (270)",
+		"Output 4": "Bleck (135)",
+		"Output 5": "Calamine (90)"
+	},
+	{
+		"Input": "Amarantum (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Furnace",
+		"Output 1": null,
+		"Output 2": "Electrum (480)",
+		"Output 3": "Cuprum (2400)",
+		"Output 4": "Bleck (960)",
+		"Output 5": "Calamine (563)"
+	},
+	{
+		"Input": "Amarantum (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Blast Furnace",
+		"Output 1": null,
+		"Output 2": "Electrum (800)",
+		"Output 3": "Cuprum (3000)",
+		"Output 4": "Bleck (600)",
+		"Output 5": "Calamine (624)"
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Dragon Salt (190)",
+		"Tool": "Furnace",
+		"Output 1": "Chalk Glance (245)",
+		"Output 2": "Electrum (88)",
+		"Output 3": "Malachite (1445)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Ichor (660)",
+		"Tool": "Furnace",
+		"Output 1": "Chalk Glance (159)",
+		"Output 2": "Electrum (212)",
+		"Output 3": "Malachite (2793)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Sulfur (560)",
+		"Tool": "Furnace",
+		"Output 1": "Chalk Glance (142)",
+		"Output 2": "Electrum (129)",
+		"Output 3": "Malachite (1782)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Water (1000)",
+		"Tool": "Furnace",
+		"Output 1": "Chalk Glance (72)",
+		"Output 2": "Electrum (109)",
+		"Output 3": "Malachite (3468)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Furnace",
+		"Output 1": "Chalk Glance (72)",
+		"Output 2": "Electrum (294)",
+		"Output 3": "Malachite (4816)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Coke (385)",
+		"Tool": "Furnace",
+		"Output 1": "Chalk Glance (72)",
+		"Output 2": "Electrum (212)",
+		"Output 3": "Malachite (3468)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Dragon Salt (190)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Chalk Glance (700)",
+		"Output 2": "Electrum (224)",
+		"Output 3": "Malachite (2064)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Ichor (660)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Chalk Glance (490)",
+		"Output 2": "Electrum (426)",
+		"Output 3": "Malachite (3302)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Sulfur (560)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Chalk Glance (291)",
+		"Output 2": "Electrum (291)",
+		"Output 3": "Malachite (2374)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Dragon Salt (190)",
+		"Tool": "Fabricula",
+		"Output 1": "Chalk Glance (420)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Ichor (660)",
+		"Tool": "Fabricula",
+		"Output 1": "Chalk Glance (210)",
+		"Output 2": "Electrum (336)",
+		"Output 3": "Malachite (1376)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Sulfur (560)",
+		"Tool": "Fabricula",
+		"Output 1": "Chalk Glance (168)",
+		"Output 2": "Electrum (112)",
+		"Output 3": "Malachite (344)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Calspar (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Fabricula",
+		"Output 1": null,
+		"Output 2": "Electrum (560)",
+		"Output 3": "Malachite (3440)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Malachite (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Furnace ",
+		"Output 1": "Cuprum (4000)",
+		"Output 2": "Sulfur (47)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Malachite (10k)",
+		"Catalyst": "Coke (385)",
+		"Tool": "Furnace ",
+		"Output 1": "Cuprum (4000)",
+		"Output 2": "Sulfur (83)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Malachite (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Cuprum (5000)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Malachite (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Fabricula",
+		"Output 1": "Cuprum (4000)",
+		"Output 2": "Sulfur (64)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Malachite (10k)",
+		"Catalyst": "Coke (385)",
+		"Tool": "Fabricula",
+		"Output 1": "Cuprum (4000)",
+		"Output 2": "Sulfur (320)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Malachite (10k)",
+		"Catalyst": "Coal (535)",
+		"Tool": "Fabricula",
+		"Output 1": "Cuprum (2400)",
+		"Output 2": "Sulfur (640)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Bleckblende (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Natorus",
+		"Output 1": "Bleck (5400)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Bleckblende (10k)",
+		"Catalyst": "Rock Oil (420)",
+		"Tool": "Natorus",
+		"Output 1": "Bleck (5400)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Bleckblende (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Greater Nat",
+		"Output 1": "Bleck (6000)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Bleckblende (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Furnace",
+		"Output 1": "Bleck (1920)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Cinnabar (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Furnace",
+		"Output 1": "Ichor (3900)",
+		"Output 2": "Sulfur (296)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Cinnabar (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Greater Nat",
+		"Output 1": null,
+		"Output 2": "Sulfur (672)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Cinnabar (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Fabricula",
+		"Output 1": "Ichor (960)",
+		"Output 2": "Sulfur (160)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Coal (10k)",
+		"Catalyst": "Coal (535)",
+		"Tool": "Furnace",
+		"Output 1": "Coke (7200)",
+		"Output 2": "Pitch (418)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Coal (10k)",
+		"Catalyst": "Calx Powder (715)",
+		"Tool": "Furnace",
+		"Output 1": "Coke (7200)",
+		"Output 2": "Pitch (386)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Magmum (10k)",
+		"Catalyst": null,
+		"Tool": "Grizzly",
+		"Output 1": "Kyanite (2500)",
+		"Output 2": "Maalite (650)",
+		"Output 3": "Pyropite (200)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Magmum (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Kiln",
+		"Output 1": null,
+		"Output 2": "Maalite (2080)",
+		"Output 3": "Pyropite (480)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Magmum (10k)",
+		"Catalyst": "Coke (385)",
+		"Tool": "Kiln",
+		"Output 1": null,
+		"Output 2": "Maalite (4264)",
+		"Output 3": "Pyropite (221)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Magmum (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Hearth",
+		"Output 1": null,
+		"Output 2": "Maalite (780)",
+		"Output 3": "Pyropite (600)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Galbinum (10k)",
+		"Catalyst": "Calx Powder (715)",
+		"Tool": "Furnace",
+		"Output 1": "Lupium (171)",
+		"Output 2": "Pyrite (37)",
+		"Output 3": "Pyroxene (696)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Galbinum (10k)",
+		"Catalyst": "Calx Powder (715)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Lupium (315)",
+		"Output 2": null,
+		"Output 3": "Pyroxene (1280)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Galbinum (10k)",
+		"Catalyst": "Coke (385)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Lupium (246)",
+		"Output 2": null,
+		"Output 3": "Pyroxene (1760)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Galbinum (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Lupium (246)",
+		"Output 2": null,
+		"Output 3": "Pyroxene (1400)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Galbinum (10k)",
+		"Catalyst": "Coke (385)",
+		"Tool": "Greater Nat",
+		"Output 1": "Lupium (62)",
+		"Output 2": "Pyrite (653)",
+		"Output 3": "Pyroxene (4200)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Azurite (10k)",
+		"Catalyst": "Fuming Salt (315)",
+		"Tool": "Fabricula",
+		"Output 1": "Cuprite (300)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Electrum (10k)",
+		"Catalyst": "Calx Powder (715)",
+		"Tool": "Furnace ",
+		"Output 1": "Cuprum (2600)",
+		"Output 2": "Silver (1600)",
+		"Output 3": "Gold (1400)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Electrum (10k)",
+		"Catalyst": "Calx Powder (715)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Cuprum (3500)",
+		"Output 2": "Silver (2500)",
+		"Output 3": "Gold (1750)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Chalk Glance (10k)",
+		"Catalyst": "Dragon Salt (190)",
+		"Tool": "Fabricula",
+		"Output 1": "Skadite (3200)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Chalk Glance (10k)",
+		"Catalyst": "Ichor (660)",
+		"Tool": "Fabricula",
+		"Output 1": "Skadite (3200)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Pyroxene (10k)",
+		"Catalyst": "Calx Powder (715)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Almine (400)",
+		"Output 2": "Acronite (800)",
+		"Output 3": "Electrum (2720)",
+		"Output 4": "Calamine (2040)",
+		"Output 5": null
+	},
+	{
+		"Input": "Pyroxene (10k)",
+		"Catalyst": "Calx Powder (715)",
+		"Tool": "Greater Nat",
+		"Output 1": "Almine (2000)",
+		"Output 2": "Acronite (160)",
+		"Output 3": "Electrum (2720)",
+		"Output 4": "Calamine (3400)",
+		"Output 5": null
+	},
+	{
+		"Input": "Red Bleckblende (10k)",
+		"Catalyst": "Coke (385)",
+		"Tool": "Furnace",
+		"Output 1": "Aabam (2322)",
+		"Output 2": "Silver (198)",
+		"Output 3": "Sanguinite (23)",
+		"Output 4": "Calamine (569)",
+		"Output 5": null
+	},
+	{
+		"Input": "Red Bleckblende (10k)",
+		"Catalyst": "Rock Oil (420)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Aabam (3000)",
+		"Output 2": "Silver (200)",
+		"Output 3": "Sanguinite (140)",
+		"Output 4": "Calamine (240)",
+		"Output 5": null
+	},
+	{
+		"Input": "Red Bleckblende (10k)",
+		"Catalyst": "Fuming Salt (315)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Aabam (3000)",
+		"Output 2": "Silver (350)",
+		"Output 3": "Sanguinite (200)",
+		"Output 4": "Calamine (456)",
+		"Output 5": null
+	},
+	{
+		"Input": "Waterstone (10k)",
+		"Catalyst": "Rock Oil (420)",
+		"Tool": "Fabricula",
+		"Output 1": "Gem Metal (3200)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Waterstone (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Fabricula",
+		"Output 1": "Gem Metal (1920)",
+		"Output 2": "Lupium (960)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Waterstone (10k)",
+		"Catalyst": "Fuming Salt (315)",
+		"Tool": "Fabricula",
+		"Output 1": "Gem Metal (640)",
+		"Output 2": "Lupium (2400)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Waterstone (10k)",
+		"Catalyst": "Fuming Salt (315)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Gem Metal (1248)",
+		"Output 2": "Lupium (3200)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Waterstone (10k)",
+		"Catalyst": "Bor (720)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Gem Metal (1824)",
+		"Output 2": "Lupium (2048)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Amarantum (10k)",
+		"Catalyst": "Rock Oil (420)",
+		"Tool": "Furnace",
+		"Output 1": null,
+		"Output 2": "Electrum (144)",
+		"Output 3": "Cuprum (2064)",
+		"Output 4": "Bleck (960)",
+		"Output 5": "Calamine (384)"
+	},
+	{
+		"Input": "Amarantum (10k)",
+		"Catalyst": "Coke (385)",
+		"Tool": "Furnace",
+		"Output 1": null,
+		"Output 2": "Electrum (346)",
+		"Output 3": "Cuprum (2400)",
+		"Output 4": "Bleck (557)",
+		"Output 5": "Calamine (1011)"
+	},
+	{
+		"Input": "Blood Ore (10k)",
+		"Catalyst": "Sulfur (560)",
+		"Tool": "Furnace",
+		"Output 1": "Pig Iron (4000)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Waterstone (10k)",
+		"Catalyst": "Fuming Salt (315)",
+		"Tool": "Furnace",
+		"Output 1": "Gem Metal (264)",
+		"Output 2": "Lupium (1800)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Waterstone (10k)",
+		"Catalyst": "Calx Powder (715)",
+		"Tool": "Furnace",
+		"Output 1": "Gem Metal (180)",
+		"Output 2": "Lupium (1422)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Waterstone (10k)",
+		"Catalyst": "Sulfur (560)",
+		"Tool": "Furnace",
+		"Output 1": "Gem Metal (306)",
+		"Output 2": "Lupium (792)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Galbinum (10k)",
+		"Catalyst": "Fuming Salt (315)",
+		"Tool": "Blast Furnace",
+		"Output 1": "Pyroxene (1040)",
+		"Output 2": "Lupium (384)",
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Gabore (10k)",
+		"Catalyst": "Rock Oil (420)",
+		"Tool": "Grinder",
+		"Output 1": "Galbinum (1050)",
+		"Output 2": "Blood Ore (226)",
+		"Output 3": "Gabore Powder (4323)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Gabore (10k)",
+		"Catalyst": "Water (1000)",
+		"Tool": "Grinder",
+		"Output 1": "Galbinum (998)",
+		"Output 2": "Blood Ore (214)",
+		"Output 3": "Gabore Powder (4095)",
+		"Output 4": null,
+		"Output 5": null
+	},
+	{
+		"Input": "Granum (10k)",
+		"Catalyst": "Water (1000)",
+		"Tool": "Attractor",
+		"Output 1": "Blood Ore (1386)",
+		"Output 2": null,
+		"Output 3": null,
+		"Output 4": null,
+		"Output 5": null
+	}
+]

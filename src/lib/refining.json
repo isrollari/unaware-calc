@@ -1,0 +1,50 @@
+[
+	{
+		"Input": "Pig Iron",
+		"Catalyst 1": "Coke",
+		"Catalyst 2": "Calx Powder",
+		"Output": "Grain Steel"
+	},
+	{
+		"Input": "Grain Steel",
+		"Catalyst 1": "Coal",
+		"Catalyst 2": "Saburra Powder",
+		"Output": "Steel"
+	},
+	{
+		"Input": "Cuprum",
+		"Catalyst 1": "Bleck",
+		"Catalyst 2": "Saburra Powder",
+		"Output": "Bron"
+	},
+	{
+		"Input": "Cuprum",
+		"Catalyst 1": "Calamine",
+		"Catalyst 2": "Saburra Powder",
+		"Output": "Messing"
+	},
+	{
+		"Input": "Messing",
+		"Catalyst 1": "Almine",
+		"Catalyst 2": "Gem Metal",
+		"Output": "Tindremic Messing"
+	},
+	{
+		"Input": "Grain Steel",
+		"Catalyst 1": "Almine",
+		"Catalyst 2": "Acronite",
+		"Output": "Cronite"
+	},
+	{
+		"Input": "Tungsteel",
+		"Catalyst 1": "Cronite",
+		"Catalyst 2": "Sanguinite",
+		"Output": "Oghmium"
+	},
+	{
+		"Input": "Grain Steel",
+		"Catalyst 1": "Lupium",
+		"Catalyst 2": "Granum Powder",
+		"Output": "Tungsteel"
+	}
+]
