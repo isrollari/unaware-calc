@@ -116,7 +116,7 @@
 			/>
 		</div>
 	</div>
-	<div class="input-group">
+	<div class="input-group-oghmir">
 		<label>Is Oghmir:</label>
 		<div class="grid-select oghmir-grid">
 			<div
@@ -171,91 +171,105 @@
 
 <style>
 	:global(body) {
-    background-color: #0a0a0a;
-    color: #d0d0d0;
-    font-family: 'Cinzel', serif;
+		background-color: #1e1e1e;
+		color: #ffffff;
+		font-family: Arial, sans-serif;
 		margin: 0;
 		padding: 0;
 	}
 
 	main {
-    max-width: 1000px;
+		max-width: 800px;
 		margin: 0 auto;
 		padding: 2rem;
 	}
 
+	.oghmir-grid {
+        grid-template-columns: 1fr;
+		margin-bottom: 1rem;
+    }
+
 	h1 {
-    color: #c9aa71;
+		color: #ffc72c;
 		text-align: center;
 		margin-bottom: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(201, 170, 113, 0.5);
 	}
 
 	.input-group {
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 	}
 
 	label {
 		display: block;
 		margin-bottom: 0.5rem;
-    color: #c9aa71;
-    font-weight: bold;
+		color: #ffc72c;
 	}
 
 	input[type='text'],
 	input[type='number'],
 	select {
 		width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #444;
+		padding: 0.5rem;
+		border: none;
 		border-radius: 4px;
-    background-color: #1a1a1a;
-    color: #d0d0d0;
-    font-family: 'Cinzel', serif;
+		background-color: #2e2e2e;
+		color: #ffffff;
+	}
+
+	.checkbox label {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+	}
+
+	.checkbox input[type='checkbox'] {
+		margin-right: 0.5rem;
 	}
 
 	button {
 		display: block;
 		width: 100%;
-    padding: 1rem;
-    background-color: #8b0000;
+		padding: 0.75rem;
+		background-color: #da291c;
 		color: #ffffff;
 		border: none;
 		border-radius: 4px;
 		font-size: 1rem;
 		cursor: pointer;
 		transition: background-color 0.3s ease;
-    font-family: 'Cinzel', serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
 	}
 
 	button:hover {
-    background-color: #a52a2a;
+		background-color: #b71c1c;
 	}
 
 	.result {
 		margin-top: 2rem;
-    padding: 1.5rem;
-    background-color: #1a1a1a;
+		padding: 1rem;
+		background-color: #2e2e2e;
 		border-radius: 4px;
-    border: 1px solid #444;
 	}
 
 	.result h2 {
-    color: #c9aa71;
+		color: #ffc72c;
 		margin-top: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 	}
 
 	pre {
 		white-space: pre-wrap;
 		word-break: break-word;
-    color: #d0d0d0;
+	}
+
+	select[multiple] {
+		height: 100px;
+		overflow-y: auto;
+	}
+
+	small {
+		display: block;
+		margin-top: 0.25rem;
+		color: #ffc72c;
+		font-size: 0.8rem;
 	}
 
 	.grid-select {
@@ -271,7 +285,7 @@
 
 	.tool-grid {
 		grid-template-columns: repeat(4, 1fr);
-		grid-template-rows: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 1fr);
 	}
 
 	.resource-remove-grid {
@@ -279,12 +293,8 @@
 		grid-template-rows: 1fr;
 	}
 
-	.oghmir-grid {
-		grid-template-columns: 1fr;
-	}
-
 	.grid-item {
-    background-color: #1a1a1a;
+		background-color: #2e2e2e;
 		border: 2px solid #444;
 		border-radius: 4px;
 		padding: 10px;
@@ -300,14 +310,19 @@
 	}
 
 	.grid-item:hover {
-    background-color: #2a2a2a;
-    border-color: #c9aa71;
+		background-color: #3e3e3e;
 	}
 
 	.grid-item.selected {
-    border-color: #c9aa71;
-    background-color: #2a2a2a;
-    box-shadow: 0 0 10px rgba(201, 170, 113, 0.5);
+		border-color: #ffc72c;
+		background-color: #3e3e3e;
+	}
+
+	.resource-icon {
+		width: 45px;
+		height: 45px;
+		margin-bottom: 10px;
+		object-fit: cover;
 	}
 
 	.item-text {
@@ -315,22 +330,33 @@
 		word-break: break-word;
 		padding-top: 5px;
 		position: relative;
-    color: #d0d0d0;
+	}
+	.tool-grid .grid-item.selected .item-text::after,
+	.resource-remove-grid .grid-item.selected .item-text::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 50%;
+		border-top: 2px solid #ffc72c;
 	}
 
-  .resource-icon {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    margin-bottom: 5px;
-  }
+	.quantity-input {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.quantity-input input[type="number"] {
+		width: 100%;
+	}
 
 	.slider {
 		-webkit-appearance: none;
 		width: 100%;
 		height: 15px;
 		border-radius: 5px;
-    background: #1a1a1a;
+		background: #2e2e2e;
 		outline: none;
 		opacity: 0.7;
 		transition: opacity .2s;
@@ -346,7 +372,7 @@
 		width: 25px;
 		height: 25px;
 		border-radius: 50%;
-    background: #c9aa71;
+		background: #ffc72c;
 		cursor: pointer;
 	}
 
@@ -354,20 +380,18 @@
 		width: 25px;
 		height: 25px;
 		border-radius: 50%;
-    background: #c9aa71;
+		background: #ffc72c;
 		cursor: pointer;
 	}
 
-  .tree-traversal-link,
-  .main-page-link {
+	.tree-traversal-link {
 		display: flex;
 		justify-content: center;
 		margin: 2rem 0;
 	}
 
-  .tree-traversal-link .grid-item,
-  .main-page-link .grid-item {
-    background-color: #1a1a1a;
+	.tree-traversal-link .grid-item {
+		background-color: #2e2e2e;
 		border: 2px solid #444;
 		border-radius: 4px;
 		padding: 15px 30px;
@@ -376,18 +400,20 @@
 		transition: all 0.3s ease;
 	}
 
-  .tree-traversal-link .grid-item:hover,
-  .main-page-link .grid-item:hover {
-    background-color: #2a2a2a;
-    border-color: #c9aa71;
+	.tree-traversal-link .grid-item:hover {
+		background-color: #3e3e3e;
+		border-color: #ffc72c;
 	}
 
-  .tree-traversal-link a,
-  .main-page-link a {
-    color: #c9aa71;
+	.tree-traversal-link a {
+		color: #ffc72c;
 		text-decoration: none;
 		font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 	}
+
+	.tree-traversal-link .item-text {
+		display: block;
+		padding: 5px 0;
+	}
+
 </style>
