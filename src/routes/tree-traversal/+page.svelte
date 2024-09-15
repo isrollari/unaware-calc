@@ -5,7 +5,7 @@
   import refiningData from '$lib/refining.json';
 
   let resourceName = '';
-  let quantity = 10000;
+  let quantity = 1;
   let maxDepth = 1;
   let asOghmir = false;
   let result = '';
