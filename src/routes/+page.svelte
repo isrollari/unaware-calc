@@ -116,7 +116,7 @@
 			/>
 		</div>
 	</div>
-	<div class="input-group-oghmir">
+	<div class="input-group">
 		<label>Is Oghmir:</label>
 		<div class="grid-select oghmir-grid">
 			<div
@@ -171,105 +171,91 @@
 
 <style>
 	:global(body) {
-		background-color: #1e1e1e;
-		color: #ffffff;
-		font-family: Arial, sans-serif;
+    background-color: #0a0a0a;
+    color: #d0d0d0;
+    font-family: 'Cinzel', serif;
 		margin: 0;
 		padding: 0;
 	}
 
 	main {
-		max-width: 800px;
+    max-width: 1000px;
 		margin: 0 auto;
 		padding: 2rem;
 	}
 
-	.oghmir-grid {
-        grid-template-columns: 1fr;
-		margin-bottom: 1rem;
-    }
-
 	h1 {
-		color: #ffc72c;
+    color: #c9aa71;
 		text-align: center;
 		margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(201, 170, 113, 0.5);
 	}
 
 	.input-group {
-		margin-bottom: 1rem;
+		margin-bottom: 2rem;
 	}
 
 	label {
 		display: block;
 		margin-bottom: 0.5rem;
-		color: #ffc72c;
+    color: #c9aa71;
+    font-weight: bold;
 	}
 
 	input[type='text'],
 	input[type='number'],
 	select {
 		width: 100%;
-		padding: 0.5rem;
-		border: none;
+    padding: 0.75rem;
+    border: 1px solid #444;
 		border-radius: 4px;
-		background-color: #2e2e2e;
-		color: #ffffff;
-	}
-
-	.checkbox label {
-		display: flex;
-		align-items: center;
-		cursor: pointer;
-	}
-
-	.checkbox input[type='checkbox'] {
-		margin-right: 0.5rem;
+    background-color: #1a1a1a;
+    color: #d0d0d0;
+    font-family: 'Cinzel', serif;
 	}
 
 	button {
 		display: block;
 		width: 100%;
-		padding: 0.75rem;
-		background-color: #da291c;
+    padding: 1rem;
+    background-color: #8b0000;
 		color: #ffffff;
 		border: none;
 		border-radius: 4px;
 		font-size: 1rem;
 		cursor: pointer;
 		transition: background-color 0.3s ease;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
 	}
 
 	button:hover {
-		background-color: #b71c1c;
+    background-color: #a52a2a;
 	}
 
 	.result {
 		margin-top: 2rem;
-		padding: 1rem;
-		background-color: #2e2e2e;
+    padding: 1.5rem;
+    background-color: #1a1a1a;
 		border-radius: 4px;
+    border: 1px solid #444;
 	}
 
 	.result h2 {
-		color: #ffc72c;
+    color: #c9aa71;
 		margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 	}
 
 	pre {
 		white-space: pre-wrap;
 		word-break: break-word;
-	}
-
-	select[multiple] {
-		height: 100px;
-		overflow-y: auto;
-	}
-
-	small {
-		display: block;
-		margin-top: 0.25rem;
-		color: #ffc72c;
-		font-size: 0.8rem;
+    color: #d0d0d0;
 	}
 
 	.grid-select {
@@ -285,7 +271,7 @@
 
 	.tool-grid {
 		grid-template-columns: repeat(4, 1fr);
-		grid-template-rows: repeat(2, 1fr);
+		grid-template-rows: repeat(3, 1fr);
 	}
 
 	.resource-remove-grid {
@@ -293,8 +279,12 @@
 		grid-template-rows: 1fr;
 	}
 
+	.oghmir-grid {
+		grid-template-columns: 1fr;
+	}
+
 	.grid-item {
-		background-color: #2e2e2e;
+    background-color: #1a1a1a;
 		border: 2px solid #444;
 		border-radius: 4px;
 		padding: 10px;
@@ -310,19 +300,14 @@
 	}
 
 	.grid-item:hover {
-		background-color: #3e3e3e;
+    background-color: #2a2a2a;
+    border-color: #c9aa71;
 	}
 
 	.grid-item.selected {
-		border-color: #ffc72c;
-		background-color: #3e3e3e;
-	}
-
-	.resource-icon {
-		width: 45px;
-		height: 45px;
-		margin-bottom: 10px;
-		object-fit: cover;
+    border-color: #c9aa71;
+    background-color: #2a2a2a;
+    box-shadow: 0 0 10px rgba(201, 170, 113, 0.5);
 	}
 
 	.item-text {
@@ -330,33 +315,22 @@
 		word-break: break-word;
 		padding-top: 5px;
 		position: relative;
-	}
-	.tool-grid .grid-item.selected .item-text::after,
-	.resource-remove-grid .grid-item.selected .item-text::after {
-		content: '';
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 50%;
-		border-top: 2px solid #ffc72c;
+    color: #d0d0d0;
 	}
 
-	.quantity-input {
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
-	}
-
-	.quantity-input input[type="number"] {
-		width: 100%;
-	}
+  .resource-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-bottom: 5px;
+  }
 
 	.slider {
 		-webkit-appearance: none;
 		width: 100%;
 		height: 15px;
 		border-radius: 5px;
-		background: #2e2e2e;
+    background: #1a1a1a;
 		outline: none;
 		opacity: 0.7;
 		transition: opacity .2s;
@@ -372,7 +346,7 @@
 		width: 25px;
 		height: 25px;
 		border-radius: 50%;
-		background: #ffc72c;
+    background: #c9aa71;
 		cursor: pointer;
 	}
 
@@ -380,18 +354,20 @@
 		width: 25px;
 		height: 25px;
 		border-radius: 50%;
-		background: #ffc72c;
+    background: #c9aa71;
 		cursor: pointer;
 	}
 
-	.tree-traversal-link {
+  .tree-traversal-link,
+  .main-page-link {
 		display: flex;
 		justify-content: center;
 		margin: 2rem 0;
 	}
 
-	.tree-traversal-link .grid-item {
-		background-color: #2e2e2e;
+  .tree-traversal-link .grid-item,
+  .main-page-link .grid-item {
+    background-color: #1a1a1a;
 		border: 2px solid #444;
 		border-radius: 4px;
 		padding: 15px 30px;
@@ -400,20 +376,18 @@
 		transition: all 0.3s ease;
 	}
 
-	.tree-traversal-link .grid-item:hover {
-		background-color: #3e3e3e;
-		border-color: #ffc72c;
+  .tree-traversal-link .grid-item:hover,
+  .main-page-link .grid-item:hover {
+    background-color: #2a2a2a;
+    border-color: #c9aa71;
 	}
 
-	.tree-traversal-link a {
-		color: #ffc72c;
+  .tree-traversal-link a,
+  .main-page-link a {
+    color: #c9aa71;
 		text-decoration: none;
 		font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 	}
-
-	.tree-traversal-link .item-text {
-		display: block;
-		padding: 5px 0;
-	}
-
 </style>
