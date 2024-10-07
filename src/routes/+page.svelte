@@ -10,19 +10,21 @@
       <a href="/resource-calculator">
         <span class="item-text">Go to Gather Calculator</span>
       </a>
+      <p class="item-description">Calculate how many resources to gather in order to produce metal</p>
     </div>
     <div class="grid-item">
       <a href="/tree-traversal">
         <span class="item-text">Go to Refiner Calculator</span>
       </a>
+      <p class="item-description">See what you can make with materials you already have</p>
     </div>
-	<div class="grid-item">
-		<a href="/optimized-calculator">
-		  <span class="item-text">Go to Optimized Calculator</span>
-		</a>
-	  </div>
+    <div class="grid-item">
+      <a href="/optimized-calculator">
+        <span class="item-text">Go to Optimized Calculator</span>
+      </a>
+      <p class="item-description">Hybrid between Refiner and Gatherer Calculators, in progress</p>
+    </div>
   </div>
-
 </main>
 
 <style>
@@ -48,7 +50,8 @@
 
   .navigation-links {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 2rem;
     margin: 2rem 0;
   }
@@ -61,6 +64,8 @@
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 100%;
+    max-width: 400px;
   }
 
   .grid-item:hover {
@@ -77,5 +82,11 @@
   .item-text {
     display: block;
     padding: 5px 0;
+  }
+
+  .item-description {
+    color: #cccccc;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
   }
 </style>
