@@ -428,3 +428,56 @@ export function calculateResources(
 		return 'An unknown error occurred';
 	}
 }
+
+export function getAllProductionPaths(targetResource: string): Set<string> {
+    const allResources = new Set<string>();
+    const visited = new Set<string>();
+
+    function getFullResourceName(input: string): string {
+        // Remove quantity indicators like (10k) from the end
+        return input.replace(/\s*\(\d+k?\)\s*$/, '').trim();
+    }
+
+    function dfs(resource: string) {
+        if (visited.has(resource)) return;
+        visited.add(resource);
+
+        // Add base resources
+        if (['Granum', 'Calx', 'Saburra', 'Tephra', 'Gabore'].includes(resource)) {
+            allResources.add(resource);
+            return;
+        }
+
+        // Check norsca.json data
+        for (const item of norscaData) {
+            for (let i = 1; i <= 5; i++) {
+                const output = item[`Output ${i}` as keyof typeof item];
+                if (output && getFullResourceName(output) === resource) {
+                    const input = getFullResourceName(item.Input);
+                    allResources.add(input);
+                    if (item.Catalyst) {
+                        allResources.add(getFullResourceName(item.Catalyst));
+                    }
+
+                    dfs(input);
+                }
+            }
+        }
+
+        // Check refining.json data
+        for (const item of refiningData) {
+            if (item.Output === resource) {
+                allResources.add(getFullResourceName(item.Input));
+                allResources.add(getFullResourceName(item['Catalyst 1']));
+                allResources.add(getFullResourceName(item['Catalyst 2']));
+
+                dfs(getFullResourceName(item.Input));
+                dfs(getFullResourceName(item['Catalyst 1']));
+                dfs(getFullResourceName(item['Catalyst 2']));
+            }
+        }
+    }
+
+    dfs(targetResource);
+    return new Set([...allResources].sort());
+}

@@ -10,10 +10,24 @@
   let asOghmir = false;
   let result = '';
 
-  const resourceOptions = [...new Set(norscaData.map((item: NorscaData) => item.Input.replace(/\s*\(\d+k?\)$/, '')))].sort();
-  const resourceImageMap = new Map([
-  ...norscaData.map((item: NorscaData) => [item.Input.replace(/\s*\(\d+k?\)$/, ''), item['Image Path']]),
-  ...refiningData.map((item) => [item.Output, item['Image Path']])
+  const resourceOptions = [
+  ...new Set([
+    ...norscaData.map((item: NorscaData) => item.Input.replace(/\s*\(\d+k?\)$/, '')),
+    ...refiningData.map((item) => item.Input),
+    'Grain Steel',
+    'Pig Iron',
+    'Cuprum'
+  ])
+].sort();
+const resourceImageMap = new Map<string, string>([
+  ...norscaData.map((item: NorscaData): [string, string] => [item.Input.replace(/\s*\(\d+k?\)$/, ''), item['Image Path']]),
+  ...refiningData.map((item): [string, string] => [item.Output, item['Image Path']]),
+  ...refiningData.map((item): [string, string] => [item.Input, item['Image Path']]),
+  ['Pig Iron', 'pig_iron.jpg'],
+  ['Cuprum', 'cuprum.jpg'],
+  ['Messing', 'messing.jpg'],
+  ['Grain Steel', 'grain_steel.jpg'],
+  ['Tungsteel', 'tungsteel.jpg'],
 ]);
 
   function handleCalculate() {
@@ -47,12 +61,12 @@
 </script>
 
 <main>
-  <h1>Downstream Traversal</h1>
+  <h1>Refiner Calculator</h1>
 
   <div class="main-page-link">
     <div class="grid-item">
       <a href="/">
-        <span class="item-text">Go to Resource Calculator</span>
+        <span class="item-text">Go to Home Page</span>
       </a>
     </div>
   </div>
@@ -341,8 +355,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 12px;
-    max-height: 450px;
-    overflow-y: auto;
+    max-height: 600px;
     padding-right: 12px;
   }
 

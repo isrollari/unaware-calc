@@ -420,7 +420,7 @@
 	{
 		"Input": "Malachite (10k)",
 		"Catalyst": "Bor (720)",
-		"Tool": "Furnace ",
+		"Tool": "Furnace",
 		"Output 1": "Cuprum (4000)",
 		"Output 2": "Sulfur (47)",
 		"Output 3": null,
@@ -431,7 +431,7 @@
 	{
 		"Input": "Malachite (10k)",
 		"Catalyst": "Coke (385)",
-		"Tool": "Furnace ",
+		"Tool": "Furnace",
 		"Output 1": "Cuprum (4000)",
 		"Output 2": "Sulfur (83)",
 		"Output 3": null,
@@ -695,7 +695,7 @@
 	{
 		"Input": "Electrum (10k)",
 		"Catalyst": "Calx Powder (715)",
-		"Tool": "Furnace ",
+		"Tool": "Furnace",
 		"Output 1": "Cuprum (2600)",
 		"Output 2": "Silver (1600)",
 		"Output 3": "Gold (1400)",
