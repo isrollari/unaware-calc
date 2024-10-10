@@ -64,11 +64,9 @@ const resourceImageMap = new Map<string, string>([
   <h1>Refiner Calculator</h1>
 
   <div class="main-page-link">
-    <div class="grid-item">
-      <a href="/">
+    <a href="/" class="grid-item">
         <span class="item-text">Go to Home Page</span>
-      </a>
-    </div>
+    </a>
   </div>
 
   <div class="input-group">

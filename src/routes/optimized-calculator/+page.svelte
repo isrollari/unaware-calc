@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import { calculateResources, getAllProductionPaths } from '$lib/calculations';
+    import { calculateOptimizedResources, getAllProductionPaths } from '$lib/calculations';
     import refiningData from '$lib/refining.json';
     import norscaData from '$lib/norsca.json';
 
@@ -20,10 +20,8 @@
     const resourceOptions = [...new Set(refiningData.map((item) => item.Output))].sort();
     const resourceImageMap = new Map(refiningData.map((item) => [item.Output, item['Image Path']]));
 
-    // Extract unique tools from norsca.json
     const toolOptions = [...new Set(norscaData.map((item) => item.Tool))].sort();
 
-    // Specific resources for removal
     const removableResources = ['Kimurite', 'Cerulite', 'Tephra', 'Bor'];
 
     onMount(() => {
@@ -60,12 +58,13 @@
     }
 
     function handleCalculate() {
-        result = calculateResources(
+        result = calculateOptimizedResources(
             selectedResource,
             quantity,
+            availableResources,
             isOghmir,
             Array.from(removedTools),
-            Array.from(removedResources).concat(Array.from(availableResources)),
+            Array.from(removedResources),
             useVendor
         );
         showModal = false;
@@ -106,12 +105,10 @@
 <main>
     <h1>Optimal Path Calculator</h1>
 
-	<div class="tree-traversal-link">
-		<div class="grid-item">
-			<a href="/">
-				<span class="item-text">Go to Home Page</span>
-			</a>
-		</div>
+	<div class="main-page-link">
+		<a href="/" class="grid-item">
+			<span class="item-text">Go to Home Page</span>
+		</a>
 	</div>
 
     <div class="input-group">
@@ -212,42 +209,42 @@
     </div>
 
     {#if showModal}
-        <div class="modal-backdrop">
-            <div class="modal">
-                <h2>Resources for {selectedResource}</h2>
-                <div class="resource-list">
-                    {#each [...requiredResources] as resource}
-                        <div class="resource-item">
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    checked={availableResources.has(resource)}
-                                    on:change={() => toggleAvailableResource(resource)}
-                                />
-                                {resource}
-                            </label>
-                        </div>
-                    {/each}
-                </div>
-                <div class="modal-actions">
-                    <button on:click={handleCalculate}>Calculate</button>
-                    <button on:click={() => showModal = false}>Cancel</button>
-                </div>
+    <div class="modal-backdrop">
+        <div class="modal">
+            <h2>Available Resources for {selectedResource}</h2>
+            <div class="resource-list">
+                {#each [...requiredResources] as resource}
+                    <div class="resource-item">
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={availableResources.has(resource)}
+                                on:change={() => toggleAvailableResource(resource)}
+                            />
+                            {resource}
+                        </label>
+                    </div>
+                {/each}
+            </div>
+            <div class="modal-actions">
+                <button on:click={handleCalculate}>Calculate</button>
+                <button on:click={() => showModal = false}>Cancel</button>
             </div>
         </div>
-    {/if}
+    </div>
+{/if}
 
-    {#if showResultModal}
-        <div class="modal-backdrop">
-            <div class="modal">
-                <h2>Optimal Path:</h2>
-                <pre>{result}</pre>
-                <div class="modal-actions">
-                    <button on:click={() => showResultModal = false}>Close</button>
-                </div>
+{#if showResultModal}
+    <div class="modal-backdrop">
+        <div class="modal">
+            <h2>Optimal Path:</h2>
+            <pre>{result}</pre>
+            <div class="modal-actions">
+                <button on:click={() => showResultModal = false}>Close</button>
             </div>
         </div>
-    {/if}
+    </div>
+{/if}
 </main>
 
 <style>
@@ -405,13 +402,13 @@
         cursor: pointer;
     }
 
-    .tree-traversal-link {
-        display: flex;
-        justify-content: center;
-        margin: 2rem 0;
-    }
+    .main-page-link {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+  }
 
-    .tree-traversal-link .grid-item {
+    .main-page-link .grid-item {
         background-color: #2e2e2e;
         border: 2px solid #444;
         border-radius: 4px;
@@ -421,18 +418,18 @@
         transition: all 0.3s ease;
     }
 
-    .tree-traversal-link .grid-item:hover {
+    .main-page-link .grid-item:hover {
         background-color: #3e3e3e;
         border-color: #ffc72c;
     }
 
-    .tree-traversal-link a {
+    .main-page-link a {
         color: #ffc72c;
         text-decoration: none;
         font-size: 1.1rem;
     }
 
-    .tree-traversal-link .item-text {
+    .main-page-link .item-text {
         display: block;
         padding: 5px 0;
     }

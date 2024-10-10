@@ -481,3 +481,91 @@ export function getAllProductionPaths(targetResource: string): Set<string> {
     dfs(targetResource);
     return new Set([...allResources].sort());
 }
+
+export function calculateOptimizedResources(
+    targetResource: string,
+    targetAmount: number,
+    availableResources: Set<string>,
+    isOghmir: boolean = false,
+    removedTools: string[] = [],
+    removedResources: string[] = [],
+    useVendor: boolean = false
+): string {
+    const removedToolsSet = new Set(removedTools);
+    const removedResourcesSet = new Set(removedResources);
+    const baseMaterials: { [key: string]: number } = {};
+
+    function getOptimalPath(
+        resource: string,
+        amount: number,
+        visited: Set<string> = new Set()
+    ): [string, number, string, [string, number][], string, number][] {
+        if (visited.has(resource)) {
+            return [[resource, amount, 'Circular Dependency', [], 'Error', 0]];
+        }
+
+        visited.add(resource);
+
+        if (['Granum', 'Calx', 'Saburra', 'Tephra', 'Gabore'].includes(resource) || availableResources.has(resource)) {
+            baseMaterials[resource] = (baseMaterials[resource] || 0) + amount;
+            return [];
+        }
+
+        const upstreamSteps = getBestUpstream(
+            getResourceByName(resource),
+            removedToolsSet,
+            removedResourcesSet
+        );
+
+        if (upstreamSteps.length === 0) {
+            baseMaterials[resource] = (baseMaterials[resource] || 0) + amount;
+            return [];
+        }
+
+        // Prioritize steps that use available resources
+        const prioritizedSteps = upstreamSteps.sort((a, b) => {
+			const aUsesAvailable = availableResources.has(a.input.name) || a.catalysts.some(c => availableResources.has(c.resource.name));
+			const bUsesAvailable = availableResources.has(b.input.name) || b.catalysts.some(c => availableResources.has(c.resource.name));
+			return Number(bUsesAvailable) - Number(aUsesAvailable);
+		});
+
+        const bestStep = prioritizedSteps[0];
+        const inputEfficiency = bestStep.outputs.find((o) => o.resource.name === resource)!;
+        const inputAmount = Math.ceil(
+            amount / (inputEfficiency.factor * (bestStep.tool !== 'Refining Oven' ? (isOghmir ? 1.03 : 1) : 1))
+        );
+
+        const catalysts: [string, number][] = bestStep.catalysts.map((c) => [
+            c.resource.name,
+            Math.ceil(inputAmount * c.factor * (bestStep.tool !== 'Refining Oven' ? (isOghmir ? 1.03 : 1) : 1))
+        ]);
+
+        const inputPath = getOptimalPath(bestStep.input.name, inputAmount, new Set(visited));
+        const catalystPaths = catalysts.flatMap(([name, cAmount]) =>
+            getOptimalPath(name, cAmount, new Set(visited))
+        );
+
+        return [
+            ...inputPath,
+            ...catalystPaths,
+            [
+                resource,
+                amount,
+                bestStep.input.name,
+                catalysts,
+                bestStep.tool,
+                inputEfficiency.factor * (bestStep.tool !== 'Refining Oven' ? (isOghmir ? 1.03 : 1) : 1)
+            ]
+        ];
+    }
+
+    const chain = getOptimalPath(targetResource, targetAmount);
+    let result = `To produce ${targetAmount} ${targetResource}, you need:\n`;
+    for (const [resource, amount] of Object.entries(baseMaterials)) {
+        result += `  ${amount} ${resource} --> ${(amount / 10000).toFixed(4)} Stacks\n`;
+    }
+    result += '\n';
+    result += formatProductionSteps(chain, useVendor);
+
+    return result;
+}

@@ -72,12 +72,10 @@
 <main>
 	<h1>Gatherer Calculator</h1>
 
-	<div class="tree-traversal-link">
-		<div class="grid-item">
-			<a href="/">
-				<span class="item-text">Go to Home Page</span>
-			</a>
-		</div>
+	<div class="main-page-link">
+		<a href="/" class="grid-item">
+			<span class="item-text">Go to Home Page</span>
+		</a>
 	</div>
 
 	<div class="input-group">
@@ -375,13 +373,13 @@
 		cursor: pointer;
 	}
 
-	.tree-traversal-link {
-		display: flex;
-		justify-content: center;
-		margin: 2rem 0;
-	}
+	.main-page-link {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+  }
 
-	.tree-traversal-link .grid-item {
+	.main-page-link .grid-item {
 		background-color: #2e2e2e;
 		border: 2px solid #444;
 		border-radius: 4px;
@@ -391,18 +389,18 @@
 		transition: all 0.3s ease;
 	}
 
-	.tree-traversal-link .grid-item:hover {
+	.main-page-link .grid-item:hover {
 		background-color: #3e3e3e;
 		border-color: #ffc72c;
 	}
 
-	.tree-traversal-link a {
+	.main-page-link a {
 		color: #ffc72c;
 		text-decoration: none;
 		font-size: 1.1rem;
 	}
 
-	.tree-traversal-link .item-text {
+	.main-page-link .item-text {
 		display: block;
 		padding: 5px 0;
 	}

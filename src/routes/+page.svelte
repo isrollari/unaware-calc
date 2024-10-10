@@ -6,24 +6,18 @@
   <h1>Mortal Online 2 Calculators</h1>
 
   <div class="navigation-links">
-    <div class="grid-item">
-      <a href="/resource-calculator">
-        <span class="item-text">Go to Gather Calculator</span>
-      </a>
+    <a href="/resource-calculator" class="grid-item">
+      <span class="item-text">Go to Gather Calculator</span>
       <p class="item-description">Calculate how many resources to gather in order to produce metal</p>
-    </div>
-    <div class="grid-item">
-      <a href="/tree-traversal">
-        <span class="item-text">Go to Refiner Calculator</span>
-      </a>
+    </a>
+    <a href="/tree-traversal" class="grid-item">
+      <span class="item-text">Go to Refiner Calculator</span>
       <p class="item-description">See what you can make with materials you already have</p>
-    </div>
-    <div class="grid-item">
-      <a href="/optimized-calculator">
-        <span class="item-text">Go to Optimized Calculator</span>
-      </a>
+    </a>
+    <a href="/optimized-calculator" class="grid-item">
+      <span class="item-text">Go to Optimized Calculator</span>
       <p class="item-description">Hybrid between Refiner and Gatherer Calculators, in progress</p>
-    </div>
+    </a>
   </div>
 </main>
 
@@ -48,7 +42,7 @@
     margin-bottom: 2rem;
   }
 
-  .navigation-links {
+.navigation-links {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,6 +60,8 @@
     transition: all 0.3s ease;
     width: 100%;
     max-width: 400px;
+    text-decoration: none;
+    display: block;
   }
 
   .grid-item:hover {
@@ -73,13 +69,9 @@
     border-color: #ffc72c;
   }
 
-  .grid-item a {
+  .grid-item .item-text {
     color: #ffc72c;
-    text-decoration: none;
     font-size: 1.1rem;
-  }
-
-  .item-text {
     display: block;
     padding: 5px 0;
   }
