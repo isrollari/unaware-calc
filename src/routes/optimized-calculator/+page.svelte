@@ -13,6 +13,7 @@
 
     let quantity = 1;
     let isOghmir = false;
+    let hasMasteries = false;
     let useVendor = false;
     let removedTools: Set<string> = new Set();
     let removedResources: Set<string> = new Set();
@@ -62,7 +63,7 @@
             selectedResource,
             quantity,
             availableResources,
-            isOghmir,
+            { isOghmir, hasMasteries },
             Array.from(removedTools),
             Array.from(removedResources),
             useVendor
@@ -103,7 +104,8 @@
 </script>
 
 <main>
-    <h1>Optimal Path Calculator</h1>
+    <h1>Smart Planner</h1>
+    <p class="page-subtitle">Tell it what you want and what you already have — it plans around your stockpile, your tools and vendor purchases.</p>
 
 	<div class="main-page-link">
 		<a href="/" class="grid-item">
@@ -152,7 +154,7 @@
 
     <div class="input-group-options">
         <div class="option-item">
-            <label>Click if you are an Oghmir:</label>
+            <label>Oghmir clade (+3% ore yield):</label>
             <div class="grid-select option-grid">
                 <div
                     class="grid-item"
@@ -162,6 +164,19 @@
                     <span class="item-text">Oghmir</span>
         </div>
         </div>
+        </div>
+
+        <div class="option-item">
+            <label>Masteries (+6% ore yield):</label>
+            <div class="grid-select option-grid">
+                <div
+                    class="grid-item"
+                    class:selected={hasMasteries}
+                    on:click={() => hasMasteries = !hasMasteries}
+                >
+                    <span class="item-text">Masteries</span>
+                </div>
+            </div>
         </div>
 
         <div class="option-item">
@@ -248,6 +263,13 @@
 </main>
 
 <style>
+  .page-subtitle {
+    text-align: center;
+    color: #cccccc;
+    font-size: 0.95rem;
+    margin: -1rem 0 1.5rem;
+  }
+
     :global(body) {
         background-color: #1e1e1e;
         color: #ffffff;
@@ -443,6 +465,16 @@
     .option-item {
         flex: 1;
         margin-right: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .option-item label {
+        margin-bottom: 0.5rem;
+    }
+
+    .option-item .grid-select {
+        margin-top: auto;
     }
 
     .option-item:last-child {

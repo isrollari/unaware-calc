@@ -8,6 +8,7 @@
   let quantity = 1;
   let maxDepth = 1;
   let asOghmir = false;
+  let hasMasteries = false;
   let result = '';
 
   const resourceOptions = [
@@ -35,7 +36,7 @@ const resourceImageMap = new Map<string, string>([
     result = traverseDownstream(
       { resource, amount: quantity },
       maxDepth,
-      asOghmir
+      { isOghmir: asOghmir, hasMasteries }
     );
   }
 
@@ -61,7 +62,8 @@ const resourceImageMap = new Map<string, string>([
 </script>
 
 <main>
-  <h1>Refiner Calculator</h1>
+  <h1>What Can I Make?</h1>
+  <p class="page-subtitle">Pick a material you already have — see everything it can be processed into, step by step.</p>
 
   <div class="main-page-link">
     <a href="/" class="grid-item">
@@ -130,7 +132,7 @@ const resourceImageMap = new Map<string, string>([
   </div>
 
   <div class="input-group-oghmir">
-    <label>Is Oghmir:</label>
+    <label>Oghmir clade (+3% ore yield):</label>
     <div class="grid-select oghmir-grid">
       <div
         class="grid-item"
@@ -138,6 +140,19 @@ const resourceImageMap = new Map<string, string>([
         on:click={() => asOghmir = !asOghmir}
       >
         <span class="item-text">Oghmir</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-group-oghmir">
+    <label>Masteries (+6% ore yield):</label>
+    <div class="grid-select oghmir-grid">
+      <div
+        class="grid-item"
+        class:selected={hasMasteries}
+        on:click={() => hasMasteries = !hasMasteries}
+      >
+        <span class="item-text">Masteries</span>
       </div>
     </div>
   </div>
@@ -153,6 +168,13 @@ const resourceImageMap = new Map<string, string>([
 </main>
 
 <style>
+  .page-subtitle {
+    text-align: center;
+    color: #cccccc;
+    font-size: 0.95rem;
+    margin: -1rem 0 1.5rem;
+  }
+
   :global(body) {
     background-color: #1e1e1e;
     color: #ffffff;

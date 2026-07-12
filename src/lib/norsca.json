@@ -95,7 +95,7 @@
 		"Output 2": "Malachite (5760)",
 		"Output 3": null,
 		"Output 4": "Pyrite (80)",
-		"Output 5": "Suburra Powder (500)",
+		"Output 5": "Saburra Powder (500)",
 		"Image Path": "cerulite.jpg"
 	},
 	{
@@ -178,7 +178,7 @@
 	{
 		"Input": "Tephra (10k)",
 		"Catalyst": "Calx Powder (715)",
-		"Tool": "Greater Natorous",
+		"Tool": "Greater Natorus",
 		"Output 1": "Galbinum (250)",
 		"Output 2": "Cinnabar (36)",
 		"Output 3": "Magmum (122)",
@@ -189,7 +189,7 @@
 	{
 		"Input": "Tephra (10k)",
 		"Catalyst": "Bor (720)",
-		"Tool": "Greater Natorous",
+		"Tool": "Greater Natorus",
 		"Output 1": "Galbinum (1250)",
 		"Output 2": "Cinnabar (94)",
 		"Output 3": "Magmum (36)",
@@ -508,7 +508,7 @@
 	{
 		"Input": "Bleckblende (10k)",
 		"Catalyst": "Bor (720)",
-		"Tool": "Greater Natorous",
+		"Tool": "Greater Natorus",
 		"Output 1": "Bleck (6000)",
 		"Output 2": null,
 		"Output 3": null,
@@ -541,7 +541,7 @@
 	{
 		"Input": "Cinnabar (10k)",
 		"Catalyst": "Bor (720)",
-		"Tool": "Greater Natorous",
+		"Tool": "Greater Natorus",
 		"Output 1": null,
 		"Output 2": "Sulfur (672)",
 		"Output 3": null,
@@ -673,7 +673,7 @@
 	{
 		"Input": "Galbinum (10k)",
 		"Catalyst": "Coke (385)",
-		"Tool": "Greater Natorous",
+		"Tool": "Greater Natorus",
 		"Output 1": "Lupium (62)",
 		"Output 2": "Pyrite (653)",
 		"Output 3": "Pyroxene (4200)",
@@ -750,7 +750,7 @@
 	{
 		"Input": "Pyroxene (10k)",
 		"Catalyst": "Calx Powder (715)",
-		"Tool": "Greater Natorous",
+		"Tool": "Greater Natorus",
 		"Output 1": "Almine (2000)",
 		"Output 2": "Acronite (160)",
 		"Output 3": "Electrum (2720)",
