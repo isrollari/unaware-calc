@@ -25,14 +25,6 @@
 </main>
 
 <style>
-  :global(body) {
-    background-color: #1e1e1e;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-
   main {
     max-width: 800px;
     margin: 0 auto;
@@ -40,12 +32,12 @@
   }
 
   h1 {
-    color: #ffc72c;
+    color: var(--accent);
     text-align: center;
     margin-bottom: 2rem;
   }
 
-.navigation-links {
+  .navigation-links {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,8 +46,8 @@
   }
 
   .grid-item {
-    background-color: #2e2e2e;
-    border: 2px solid #444;
+    background-color: var(--surface);
+    border: 2px solid var(--border);
     border-radius: 4px;
     padding: 15px 30px;
     text-align: center;
@@ -68,19 +60,19 @@
   }
 
   .grid-item:hover {
-    background-color: #3e3e3e;
-    border-color: #ffc72c;
+    background-color: var(--surface-hover);
+    border-color: var(--accent);
   }
 
   .grid-item .item-text {
-    color: #ffc72c;
+    color: var(--accent);
     font-size: 1.1rem;
     display: block;
     padding: 5px 0;
   }
 
   .item-tagline {
-    color: #ffc72c;
+    color: var(--accent);
     opacity: 0.85;
     font-style: italic;
     font-size: 0.9rem;
@@ -88,7 +80,7 @@
   }
 
   .item-description {
-    color: #cccccc;
+    color: var(--text-muted);
     font-size: 0.9rem;
     margin-top: 0.5rem;
   }

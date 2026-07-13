@@ -8,6 +8,12 @@
 		<title> Unaware Calculator </title>
 		<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 	</head>
+	<script>
+		(function () {
+			var t = localStorage.getItem('theme') || 'dark';
+			document.documentElement.setAttribute('data-theme', t);
+		})();
+	</script>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>

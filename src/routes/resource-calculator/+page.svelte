@@ -202,18 +202,10 @@
 <style>
   .page-subtitle {
     text-align: center;
-    color: #cccccc;
+    color: var(--text-muted);
     font-size: 0.95rem;
     margin: -1rem 0 1.5rem;
   }
-
-	:global(body) {
-		background-color: #1e1e1e;
-		color: #ffffff;
-		font-family: Arial, sans-serif;
-		margin: 0;
-		padding: 0;
-	}
 
 	main {
 		max-width: 800px;
@@ -222,7 +214,7 @@
 	}
 
 	h1 {
-		color: #ffc72c;
+		color: var(--accent);
 		text-align: center;
 		margin-bottom: 2rem;
 	}
@@ -234,7 +226,7 @@
 	label {
 		display: block;
 		margin-bottom: 0.5rem;
-		color: #ffc72c;
+		color: var(--accent);
 	}
 
 	input[type='text'],
@@ -244,15 +236,15 @@
 		padding: 0.5rem;
 		border: none;
 		border-radius: 4px;
-		background-color: #2e2e2e;
-		color: #ffffff;
+		background-color: var(--surface);
+		color: var(--text);
 	}
 
 	button {
 		display: block;
 		width: 100%;
 		padding: 0.75rem;
-		background-color: #da291c;
+		background-color: var(--btn);
 		color: #ffffff;
 		border: none;
 		border-radius: 4px;
@@ -262,18 +254,18 @@
 	}
 
 	button:hover {
-		background-color: #b71c1c;
+		background-color: var(--btn-hover);
 	}
 
 	.result {
 		margin-top: 2rem;
 		padding: 1rem;
-		background-color: #2e2e2e;
+		background-color: var(--surface);
 		border-radius: 4px;
 	}
 
 	.result h2 {
-		color: #ffc72c;
+		color: var(--accent);
 		margin-top: 0;
 	}
 
@@ -304,8 +296,8 @@
 	}
 
 	.grid-item {
-		background-color: #2e2e2e;
-		border: 2px solid #444;
+		background-color: var(--surface);
+		border: 2px solid var(--border);
 		border-radius: 4px;
 		padding: 10px;
 		text-align: center;
@@ -320,12 +312,12 @@
 	}
 
 	.grid-item:hover {
-		background-color: #3e3e3e;
+		background-color: var(--surface-hover);
 	}
 
 	.grid-item.selected {
-		border-color: #ffc72c;
-		background-color: #3e3e3e;
+		border-color: var(--accent);
+		background-color: var(--surface-hover);
 	}
 
 	.resource-icon {
@@ -349,7 +341,7 @@
 		left: 0;
 		right: 0;
 		top: 50%;
-		border-top: 2px solid #ffc72c;
+		border-top: 2px solid var(--accent);
 	}
 
 	.quantity-input {
@@ -367,7 +359,7 @@
 		width: 100%;
 		height: 15px;
 		border-radius: 5px;
-		background: #2e2e2e;
+		background: var(--surface);
 		outline: none;
 		opacity: 0.7;
 		transition: opacity .2s;
@@ -383,7 +375,7 @@
 		width: 25px;
 		height: 25px;
 		border-radius: 50%;
-		background: #ffc72c;
+		background: var(--accent);
 		cursor: pointer;
 	}
 
@@ -391,7 +383,7 @@
 		width: 25px;
 		height: 25px;
 		border-radius: 50%;
-		background: #ffc72c;
+		background: var(--accent);
 		cursor: pointer;
 	}
 
@@ -402,8 +394,8 @@
   }
 
 	.main-page-link .grid-item {
-		background-color: #2e2e2e;
-		border: 2px solid #444;
+		background-color: var(--surface);
+		border: 2px solid var(--border);
 		border-radius: 4px;
 		padding: 15px 30px;
 		text-align: center;
@@ -412,12 +404,12 @@
 	}
 
 	.main-page-link .grid-item:hover {
-		background-color: #3e3e3e;
-		border-color: #ffc72c;
+		background-color: var(--surface-hover);
+		border-color: var(--accent);
 	}
 
 	.main-page-link a {
-		color: #ffc72c;
+		color: var(--accent);
 		text-decoration: none;
 		font-size: 1.1rem;
 	}
