@@ -8,7 +8,7 @@
 	let quantity = 1;
 	let isOghmir = false;
 	let hasMasteries = false;
-	let useVendor = false;
+	let useVendor = true;
 	const RARE_MATERIALS = ['Calspar', 'Waterstone'];
 	const removableResources = ['Kimurite', 'Cerulite', 'Tephra', 'Bor'];
 	let removedTools: Set<string> = new Set(['Blast Furnace', 'Greater Natorus']);
