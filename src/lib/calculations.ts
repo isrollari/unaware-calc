@@ -50,7 +50,8 @@ function calculateBaseMaterials(
 	removedTools: Set<string>,
 	removedResources: Set<string>,
 	bonuses: BonusOptions,
-	useVendor: boolean
+	useVendor: boolean,
+	values?: Map<string, number>
 ): { [key: string]: number } {
 	const baseMaterials: { [key: string]: number } = {};
 	const intermediateProducts: { [key: string]: number } = {};
@@ -82,7 +83,7 @@ function calculateBaseMaterials(
 		const amountToProduce = amount - (intermediateProducts[resourceName] || 0);
 		intermediateProducts[resourceName] = 0;
 
-		const upstreamSteps = getBestUpstream(resource, removedTools, removedResources);
+		const upstreamSteps = getBestUpstream(resource, removedTools, removedResources, values);
 		if (upstreamSteps.length === 0) {
 			baseMaterials[resourceName] = (baseMaterials[resourceName] || 0) + amountToProduce;
 			continue;
@@ -116,7 +117,8 @@ function getFullProductionChain(
 	removedTools: Set<string>,
 	removedResources: Set<string>,
 	bonuses: BonusOptions,
-	useVendor: boolean
+	useVendor: boolean,
+	values?: Map<string, number>
 ): ChainStep[] {
 	const chain: ChainStep[] = [];
 	const stack: [string, number][] = [[targetResource, targetAmount]];
@@ -152,7 +154,8 @@ function getFullProductionChain(
 		const upstreamSteps = getBestUpstream(
 			getResourceByName(resourceName),
 			removedTools,
-			removedResources
+			removedResources,
+			values
 		);
 		if (upstreamSteps.length === 0) continue;
 
@@ -285,7 +288,8 @@ export function calculateResources(
 	bonuses: BonusOptions = {},
 	removedTools: string[] = [],
 	removedResources: string[] = [],
-	useVendor: boolean = false
+	useVendor: boolean = false,
+	values?: Map<string, number>
 ): string {
 	try {
 		const removedToolsSet = new Set(removedTools);
@@ -297,7 +301,8 @@ export function calculateResources(
 			removedToolsSet,
 			removedResourcesSet,
 			bonuses,
-			useVendor
+			useVendor,
+			values
 		);
 		const chain = getFullProductionChain(
 			targetResource,
@@ -305,7 +310,8 @@ export function calculateResources(
 			removedToolsSet,
 			removedResourcesSet,
 			bonuses,
-			useVendor
+			useVendor,
+			values
 		);
 
 		let result = `To produce ${targetAmount} ${targetResource}, you need:\n`;
@@ -364,7 +370,8 @@ export function calculateOptimizedResources(
 	bonuses: BonusOptions = {},
 	removedTools: string[] = [],
 	removedResources: string[] = [],
-	useVendor: boolean = false
+	useVendor: boolean = false,
+	values?: Map<string, number>
 ): string {
 	const removedToolsSet = new Set(removedTools);
 	const removedResourcesSet = new Set(removedResources);
@@ -398,7 +405,8 @@ export function calculateOptimizedResources(
 		const upstreamSteps = getBestUpstream(
 			getResourceByName(resource),
 			removedToolsSet,
-			removedResourcesSet
+			removedResourcesSet,
+			values
 		);
 		if (upstreamSteps.length === 0) {
 			baseMaterials[resource] = (baseMaterials[resource] || 0) + amount;

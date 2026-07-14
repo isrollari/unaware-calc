@@ -20,6 +20,81 @@
     let removedTools: Set<string> = new Set(['Blast Furnace', 'Greater Natorus']);
     let removedResources: Set<string> = new Set([...RARE_MATERIALS, ...removableResources]);
     let limitRareMaterials = true;
+    let useValueMode = false;
+    const materialValues: Map<string, number> = new Map([
+		// Base ores
+		['Calx', 150000],
+		['Saburra', 150000],
+		['Granum', 200000],
+		['Gabore', 450000],
+		['Tephra', 600000],
+		['Risen Sacrifice', 2500000],
+		['Cerulite', 3000000],
+		['Kimurite', 5000000],
+		// Extraction outputs
+		['Saburra Powder', 100000],
+		['Granum Powder', 100000],
+		['Gabore Powder', 150000],
+		['Flakestone', 150000],
+		['Calspar', 200000],
+		['Chalk Glance', 300000],
+		['Pyrite', 350000],
+		['Pitch', 600000],
+		['Bleck', 600000],
+		['Bleckblende', 900000],
+		['Waterstone', 900000],
+		['Pig Iron', 1000000],
+		['Cuprite', 1200000],
+		['Malachite', 1200000],
+		['Volcanic Ash', 1500000],
+		['Cinnabar', 1800000],
+		['Maalite', 1800000],
+		['Pyroxene', 1800000],
+		['Azurite', 2400000],
+		['Magmum', 2500000],
+		['Kyanite', 3000000],
+		['Pyropite', 3000000],
+		['Red Bleckblende', 3000000],
+		['Blood Ore', 3500000],
+		['Jadeite', 3600000],
+		['Galbinum', 3800000],
+		['Aabam', 4800000],
+		['Sanguinite', 5500000],
+		['Electrum', 7000000],
+		['Nyx', 8000000],
+		['Lupium', 9000000],
+		['Silver', 10000000],
+		['Unholy Ash', 11000000],
+		['Amarantum', 12000000],
+		['Skadite', 80000000],
+		// Refined / processed metals
+		['Calx Powder', 250000],
+		['Coal', 800000],
+		['Coke', 2000000],
+		['Cuprum', 3500000],
+		['Bron', 5000000],
+		['Grain Steel', 6000000],
+		['Messing', 7000000],
+		['Steel', 12000000],
+		['Tindremic Messing', 15000000],
+		['Gold', 25000000],
+		['Gem Metal', 30000000],
+		['Almine', 30000000],
+		['Acronite', 30000000],
+		['Tungsteel', 33000000],
+		['Cronite', 70000000],
+		['Oghmium', 200000000],
+		// Vendor catalysts
+		['Water', 10],
+		['Calamine', 50],
+		['Bor', 10000],
+		['Nitre', 120],
+		['Sulfur', 120],
+		['Fuming Salt', 150],
+		['Dragon Salt', 150],
+		['Ichor', 160],
+		['Rock Oil', 200],
+    ]);
 
     const resourceOptions = [...new Set(refiningData.map((item) => item.Output))].sort();
     const resourceImageMap = new Map(refiningData.map((item) => [item.Output, item['Image Path']]));
@@ -67,7 +142,8 @@
             { isOghmir, hasMasteries },
             Array.from(removedTools),
             Array.from(removedResources),
-            useVendor
+            useVendor,
+            useValueMode ? materialValues : undefined
         );
         showModal = false;
         showResultModal = true;
@@ -202,7 +278,9 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="input-group-options">
         <div class="option-item">
             <label>Limit Rare Materials:</label>
             <div class="grid-select option-grid">
@@ -212,6 +290,19 @@
                     on:click={toggleRareMaterials}
                 >
                     <span class="item-text">Rare Limit</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="option-item">
+            <label>Optimize by value:</label>
+            <div class="grid-select option-grid">
+                <div
+                    class="grid-item"
+                    class:selected={useValueMode}
+                    on:click={() => useValueMode = !useValueMode}
+                >
+                    <span class="item-text">Value Mode <span class="beta-badge">BETA</span></span>
                 </div>
             </div>
         </div>
@@ -362,6 +453,15 @@
         align-items: center;
         justify-content: center;
         min-height: 60px;
+    }
+
+    .beta-badge {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: var(--accent);
+        vertical-align: super;
+        line-height: 1;
     }
 
     .grid-item:hover {

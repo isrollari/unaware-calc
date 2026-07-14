@@ -190,7 +190,8 @@ parseRefiningData();
 export function getBestUpstream(
 	resource: Resource,
 	removedTools: Set<string>,
-	removedResources: Set<string>
+	removedResources: Set<string>,
+	values?: Map<string, number>
 ): ProcessingStep[] {
 	return resource.upstream
 		.filter(
@@ -200,6 +201,14 @@ export function getBestUpstream(
 				step.catalysts.every((c) => !removedResources.has(c.resource.name))
 		)
 		.sort((a, b) => {
+			if (values) {
+				const totalValue = (step: ProcessingStep) =>
+					step.outputs.reduce(
+						(sum, o) => sum + o.factor * (values.get(o.resource.name) ?? 1),
+						0
+					);
+				return totalValue(b) - totalValue(a);
+			}
 			const aEff = a.outputs.find((o) => o.resource === resource)?.factor || 0;
 			const bEff = b.outputs.find((o) => o.resource === resource)?.factor || 0;
 			return bEff - aEff;
