@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  const themes = ['dark', 'light', 'parchment', 'midnight'] as const;
+  const themes = ['dark', 'light', 'parchment', 'midnight', 'dracula', 'ayu', 'cream', 'cyberpunk'] as const;
   type Theme = (typeof themes)[number];
 
   let currentTheme: Theme = 'dark';
@@ -94,6 +94,54 @@
     --accent: #7b7bff;
     --btn: #4040cc;
     --btn-hover: #3030aa;
+  }
+
+  :global([data-theme='dracula']) {
+    --bg: #282a36;
+    --surface: #44475a;
+    --surface-hover: #50536a;
+    --border: #6272a4;
+    --text: #f8f8f2;
+    --text-muted: #6272a4;
+    --accent: #bd93f9;
+    --btn: #ff79c6;
+    --btn-hover: #e0609e;
+  }
+
+  :global([data-theme='ayu']) {
+    --bg: #0a0e14;
+    --surface: #13191f;
+    --surface-hover: #1c2430;
+    --border: #1d2433;
+    --text: #b3b1ad;
+    --text-muted: #556272;
+    --accent: #e6b450;
+    --btn: #f07178;
+    --btn-hover: #c75b61;
+  }
+
+  :global([data-theme='cream']) {
+    --bg: #fffef0;
+    --surface: #f5f2e3;
+    --surface-hover: #ece9d8;
+    --border: #d4cba8;
+    --text: #2c2c2c;
+    --text-muted: #666655;
+    --accent: #a0522d;
+    --btn: #8b6914;
+    --btn-hover: #6b5010;
+  }
+
+  :global([data-theme='cyberpunk']) {
+    --bg: #0d0208;
+    --surface: #120014;
+    --surface-hover: #1a0020;
+    --border: #ff00ff;
+    --text: #00ffff;
+    --text-muted: #cc00aa;
+    --accent: #ffff00;
+    --btn: #ff0090;
+    --btn-hover: #cc0070;
   }
 
   :global(body) {
