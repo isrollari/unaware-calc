@@ -15,15 +15,16 @@
     let isOghmir = false;
     let hasMasteries = false;
     let useVendor = false;
-    let removedTools: Set<string> = new Set();
-    let removedResources: Set<string> = new Set();
+    const RARE_MATERIALS = ['Calspar', 'Waterstone'];
+    const removableResources = ['Kimurite', 'Cerulite', 'Tephra', 'Bor'];
+    let removedTools: Set<string> = new Set(['Blast Furnace', 'Greater Natorus']);
+    let removedResources: Set<string> = new Set([...RARE_MATERIALS, ...removableResources]);
+    let limitRareMaterials = true;
 
     const resourceOptions = [...new Set(refiningData.map((item) => item.Output))].sort();
     const resourceImageMap = new Map(refiningData.map((item) => [item.Output, item['Image Path']]));
 
     const toolOptions = [...new Set(norscaData.map((item) => item.Tool))].sort();
-
-    const removableResources = ['Kimurite', 'Cerulite', 'Tephra', 'Bor'];
 
     onMount(() => {
         window.addEventListener('keydown', handleKeydown);
@@ -100,6 +101,16 @@
             removedResources.add(resource);
         }
         removedResources = new Set(removedResources); // Trigger reactivity
+    }
+
+    function toggleRareMaterials() {
+        limitRareMaterials = !limitRareMaterials;
+        if (limitRareMaterials) {
+            RARE_MATERIALS.forEach((m) => removedResources.add(m));
+        } else {
+            RARE_MATERIALS.forEach((m) => removedResources.delete(m));
+        }
+        removedResources = new Set(removedResources);
     }
 </script>
 
@@ -188,6 +199,19 @@
                     on:click={() => useVendor = !useVendor}
                 >
                     <span class="item-text">Vendor</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="option-item">
+            <label>Limit Rare Materials:</label>
+            <div class="grid-select option-grid">
+                <div
+                    class="grid-item"
+                    class:selected={limitRareMaterials}
+                    on:click={toggleRareMaterials}
+                >
+                    <span class="item-text">Rare Limit</span>
                 </div>
             </div>
         </div>

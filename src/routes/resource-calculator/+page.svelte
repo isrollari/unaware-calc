@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { calculateResources } from '$lib/calculations';
+	import { calculateResources, getAllProductionPaths } from '$lib/calculations';
+	import { BASE_ORES } from '$lib/model';
 	import refiningData from '$lib/refining.json';
 	import norscaData from '$lib/norsca.json';
 
@@ -8,18 +9,20 @@
 	let isOghmir = false;
 	let hasMasteries = false;
 	let useVendor = false;
-	let removedTools: Set<string> = new Set();
-	let removedResources: Set<string> = new Set();
-	let result = '';
+	const RARE_MATERIALS = ['Calspar', 'Waterstone'];
+	const removableResources = ['Kimurite', 'Cerulite', 'Tephra', 'Bor'];
+	let removedTools: Set<string> = new Set(['Blast Furnace', 'Greater Natorus']);
+	let removedResources: Set<string> = new Set([...RARE_MATERIALS, ...removableResources]);
+	let limitRareMaterials = true;
+
+	interface PathResult { label: string; content: string; }
+	let results: PathResult[] = [];
 
 	// Extract unique output resources from refining.json
 	const resourceOptions = [...new Set(refiningData.map((item) => item.Output))].sort();
 
 	// Extract unique tools from norsca.json
 	const toolOptions = [...new Set(norscaData.map((item) => item.Tool))].sort();
-
-	// Specific resources for removal
-	const removableResources = ['Kimurite', 'Cerulite', 'Tephra', 'Bor'];
 
 	// Create a map of Output to Image Path
 	const resourceImageMap = new Map(refiningData.map((item) => [item.Output, item['Image Path']]));
@@ -46,15 +49,65 @@
 		removedResources = new Set(removedResources); // Trigger reactivity
 	}
 
+	function toggleRareMaterials() {
+		limitRareMaterials = !limitRareMaterials;
+		if (limitRareMaterials) {
+			RARE_MATERIALS.forEach((m) => removedResources.add(m));
+		} else {
+			RARE_MATERIALS.forEach((m) => removedResources.delete(m));
+		}
+		removedResources = new Set(removedResources);
+	}
+
 	function handleCalculate() {
-		result = calculateResources(
-			resourceName,
-			quantity,
-			{ isOghmir, hasMasteries },
-			Array.from(removedTools),
-			Array.from(removedResources),
-			useVendor
+		if (!resourceName) return;
+
+		const allInChain = getAllProductionPaths(resourceName);
+		// Only enumerate ores that are in the chain AND not already excluded by the user
+		const eligibleOres = (BASE_ORES as readonly string[]).filter(
+			(ore) => allInChain.has(ore) && !removedResources.has(ore)
 		);
+		const n = eligibleOres.length;
+
+		if (n === 0) {
+			const content = calculateResources(
+				resourceName, quantity,
+				{ isOghmir, hasMasteries },
+				Array.from(removedTools),
+				Array.from(removedResources),
+				useVendor
+			);
+			results = [{ label: 'Result', content }];
+			return;
+		}
+
+		const seen = new Set<string>();
+		const paths: PathResult[] = [];
+
+		for (let mask = (1 << n) - 1; mask >= 1; mask--) {
+			const included = eligibleOres.filter((_, i) => (mask >> i) & 1);
+			const excluded = eligibleOres.filter((_, i) => !((mask >> i) & 1));
+			const extraRemoved = new Set([...removedResources, ...excluded]);
+
+			const content = calculateResources(
+				resourceName, quantity,
+				{ isOghmir, hasMasteries },
+				Array.from(removedTools),
+				Array.from(extraRemoved),
+				useVendor
+			);
+
+			if (!seen.has(content)) {
+				seen.add(content);
+				// Label based on ores that actually appear in the base materials list
+				const actuallyUsed = included.filter((ore) => content.includes(` ${ore} -->`));
+				if (actuallyUsed.length === 0) continue;
+				const label = actuallyUsed.length === 1 ? `${actuallyUsed[0]} only` : actuallyUsed.join(' + ');
+				paths.push({ label, content });
+			}
+		}
+
+		results = paths;
 	}
 
 	function handleSliderChange(event: Event) {
@@ -157,6 +210,19 @@
 				</div>
 		</div>
 	</div>
+
+		<div class="option-item">
+			<label>Limit Rare Materials:</label>
+			<div class="grid-select option-grid">
+				<div
+					class="grid-item"
+					class:selected={limitRareMaterials}
+					on:click={toggleRareMaterials}
+				>
+					<span class="item-text">Rare Limit</span>
+				</div>
+			</div>
+		</div>
 		</div>
 
 	<div class="input-group">
@@ -191,11 +257,13 @@
 
 	<button on:click={handleCalculate}>Calculate</button>
 
-	{#if result}
-		<div class="result">
-			<h2>Result:</h2>
-			<pre>{result}</pre>
-		</div>
+	{#if results.length > 0}
+		{#each results as path}
+			<div class="result">
+				<h2>{results.length > 1 ? path.label : 'Result:'}</h2>
+				<pre>{path.content}</pre>
+			</div>
+		{/each}
 	{/if}
 </main>
 
