@@ -21,11 +21,7 @@
       <p class="item-tagline">"I want X and already have some of the parts."</p>
       <p class="item-description">Tell it your goal and check off materials you already own &mdash; it plans the route that uses your stockpile first, can buy catalysts from the vendor, and avoids machines you don't have. (Beta)</p>
     </a>
-    <a href="/tc-housing" class="grid-item">
-      <span class="item-text">TC Housing Prices</span>
-      <p class="item-tagline">"How much does it cost to build X?"</p>
-      <p class="item-description">Look up the wood, stone, metal, gold, and promethium costs for every Territory Control structure, organized by building type and tier.</p>
-    </a>
+
   </div>
 </main>
 
