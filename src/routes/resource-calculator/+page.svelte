@@ -201,7 +201,7 @@
 	}
 </script>
 
-<main class:split-layout={$calcLayout === 'split'}>
+<main class:split-layout={$calcLayout !== 'default'} class:split-swapped={$calcLayout === 'split-left'}>
 	<h1>Shopping List</h1>
 	<p class="page-subtitle">Pick what you want to make — get the full list of ore, catalysts and steps to make it from scratch.</p>
 
@@ -356,6 +356,7 @@
 	</div>
 
 	<div class="calc-outputs">
+	<label class="output-align-spacer" aria-hidden="true">&nbsp;</label>
 	<div class="output-panel">
 	{#if results.length > 0}
 		{#each results as path}
@@ -364,7 +365,7 @@
 				<pre>{path.content}</pre>
 			</div>
 		{/each}
-	{:else if $calcLayout === 'split'}
+	{:else if $calcLayout !== 'default'}
 		<p class="output-placeholder">Your shopping list will appear here.<br />Set your options and click Calculate.</p>
 	{/if}
 	</div>
@@ -410,6 +411,23 @@
 		position: sticky;
 		top: 2rem;
 		align-self: start;
+	}
+
+	main.split-swapped .calc-inputs {
+		order: 2;
+	}
+
+	main.split-swapped .calc-outputs {
+		order: 1;
+	}
+
+	.output-align-spacer {
+		display: none;
+	}
+
+	main.split-layout .output-align-spacer {
+		display: block;
+		visibility: hidden;
 	}
 
 	main.split-layout .output-panel {

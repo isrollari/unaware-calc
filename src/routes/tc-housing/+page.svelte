@@ -36,8 +36,19 @@
 
 	const SIEGE_WEAPONS = new Set(['Ballista', 'Manganon', 'Wheeled Ballista', 'Wheeled Mangaon']);
 
+	function parseCredit(rawCsv: string) {
+		const [creditText, , , , , , , , , , tagline, , , , discordLink] = parseCSVLine(
+			rawCsv.split('\n')[0].trim()
+		);
+		return {
+			text: creditText?.trim() ?? '',
+			tagline: tagline?.trim() ?? '',
+			discordLink: discordLink?.trim() ?? ''
+		};
+	}
+
 	function parseHousingData(): BuildingEntry[] {
-		const lines = rawCsv.split('\n');
+		const lines = rawCsv.split('\n').slice(1);
 		const entries: BuildingEntry[] = [];
 		let currentCategory = '';
 
@@ -87,6 +98,7 @@
 		return entries;
 	}
 
+	const credit = parseCredit(rawCsv);
 	const allEntries = parseHousingData();
 	const categories = [...new Set(allEntries.map((e) => e.category))];
 
@@ -167,6 +179,13 @@
 			</div>
 		</div>
 	{/each}
+
+	<p class="credit">
+		{credit.text}
+		{#if credit.discordLink}
+			<br /><a href={credit.discordLink} target="_blank" rel="noopener noreferrer">{credit.tagline || credit.discordLink}</a>
+		{/if}
+	</p>
 </main>
 
 <style>
@@ -315,5 +334,17 @@
 
 	tr:hover td {
 		background-color: var(--surface-hover);
+	}
+
+	.credit {
+		text-align: center;
+		color: var(--text-muted);
+		font-size: 0.85rem;
+		margin-top: 2rem;
+		line-height: 1.6;
+	}
+
+	.credit a {
+		color: var(--accent);
 	}
 </style>

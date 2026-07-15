@@ -49,9 +49,9 @@
 
   <button
     class="theme-toggle layout-toggle"
-    class:active={$calcLayout === 'split'}
+    class:active={$calcLayout !== 'default'}
     on:click={() => calcLayout.toggle()}
-    title="Switch layout: inputs on the left, results on the right (Shopping List &amp; What Can I Make? only)"
+    title="Switch layout: stacked, split with results on the right, or split with results on the left (Shopping List &amp; What Can I Make? only)"
   >
     &#9636;
   </button>
