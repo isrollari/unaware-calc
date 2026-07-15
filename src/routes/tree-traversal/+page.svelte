@@ -3,9 +3,10 @@
   import type { NorscaData } from '$lib/types';
   import norscaData from '$lib/norsca.json';
   import refiningData from '$lib/refining.json';
+  import { calcLayout } from '$lib/calcLayout';
 
   let resourceName = '';
-  let quantity = 1;
+  let quantity = 10000;
   let maxDepth = 1;
   let asOghmir = false;
   let hasMasteries = false;
@@ -61,7 +62,7 @@ const resourceImageMap = new Map<string, string>([
   }
 </script>
 
-<main>
+<main class:split-layout={$calcLayout === 'split'}>
   <h1>What Can I Make?</h1>
   <p class="page-subtitle">Pick a material you already have — see everything it can be processed into, step by step.</p>
 
@@ -70,6 +71,9 @@ const resourceImageMap = new Map<string, string>([
         <span class="item-text">Go to Home Page</span>
     </a>
   </div>
+
+  <div class="calc-columns">
+  <div class="calc-inputs">
 
   <div class="input-group">
   <label>Resource:</label>
@@ -110,7 +114,7 @@ const resourceImageMap = new Map<string, string>([
     </div>
   </div>
 
-  <div class="input-group">
+  <div class="input-group" title="Limits how many processing steps downstream the tool follows from your starting material. A depth of 1 shows only the immediate next products; higher values reveal further products made from those products, and so on.">
     <label for="maxDepth">Max Depth:</label>
     <div class="quantity-input">
       <input
@@ -131,7 +135,7 @@ const resourceImageMap = new Map<string, string>([
     </div>
   </div>
 
-  <div class="input-group-oghmir">
+  <div class="input-group-oghmir" title="Oghmir characters get a passive +3% bonus to ore yield when extracting resources. Enable this if your character is Oghmir so the calculator accounts for the extra ore produced per extraction.">
     <label>Oghmir clade (+3% ore yield):</label>
     <div class="grid-select oghmir-grid">
       <div
@@ -144,7 +148,7 @@ const resourceImageMap = new Map<string, string>([
     </div>
   </div>
 
-  <div class="input-group-oghmir">
+  <div class="input-group-oghmir" title="Adds a +6% ore yield bonus from trained extraction mastery passives. Enable this if you have the relevant masteries leveled — it stacks multiplicatively with the Oghmir bonus (about +9.2% combined).">
     <label>Masteries (+6% ore yield):</label>
     <div class="grid-select oghmir-grid">
       <div
@@ -159,12 +163,18 @@ const resourceImageMap = new Map<string, string>([
 
   <button on:click={handleCalculate}>Calculate</button>
 
+  </div>
+
+  <div class="calc-outputs">
   {#if result}
     <div class="result">
       <h2>Result:</h2>
       <pre>{result}</pre>
     </div>
   {/if}
+  </div>
+
+  </div>
 </main>
 
 <style>
@@ -179,6 +189,25 @@ const resourceImageMap = new Map<string, string>([
     max-width: 1000px;
     margin: 0 auto;
     padding: 2rem;
+  }
+
+  main.split-layout {
+    max-width: 1600px;
+  }
+
+  .calc-columns {
+    display: block;
+  }
+
+  main.split-layout .calc-columns {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .calc-outputs {
+    min-width: 0;
   }
 
   h1 {
@@ -262,6 +291,10 @@ const resourceImageMap = new Map<string, string>([
     padding: 1rem;
     background-color: var(--surface);
     border-radius: 4px;
+  }
+
+  main.split-layout .calc-outputs .result:first-child {
+    margin-top: 0;
   }
 
   .result h2 {

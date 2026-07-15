@@ -3,9 +3,10 @@
 	import { BASE_ORES } from '$lib/model';
 	import refiningData from '$lib/refining.json';
 	import norscaData from '$lib/norsca.json';
+	import { calcLayout } from '$lib/calcLayout';
 
 	let resourceName = '';
-	let quantity = 1;
+	let quantity = 10000;
 	let isOghmir = false;
 	let hasMasteries = false;
 	let useVendor = true;
@@ -200,7 +201,7 @@
 	}
 </script>
 
-<main>
+<main class:split-layout={$calcLayout === 'split'}>
 	<h1>Shopping List</h1>
 	<p class="page-subtitle">Pick what you want to make — get the full list of ore, catalysts and steps to make it from scratch.</p>
 
@@ -209,6 +210,9 @@
 			<span class="item-text">Go to Home Page</span>
 		</a>
 	</div>
+
+	<div class="calc-columns">
+	<div class="calc-inputs">
 
 	<div class="input-group">
 		<label>Resource Name:</label>
@@ -249,7 +253,7 @@
 		</div>
 	</div>
 	<div class="input-group-options">
-		<div class="option-item">
+		<div class="option-item" title="Oghmir characters get a passive +3% bonus to ore yield when extracting resources. Enable this if your character is Oghmir so the calculator accounts for the extra ore produced per extraction.">
 		<label>Oghmir clade (+3% ore yield):</label>
 			<div class="grid-select option-grid">
 			<div
@@ -262,7 +266,7 @@
 		</div>
 	</div>
 
-		<div class="option-item">
+		<div class="option-item" title="Adds a +6% ore yield bonus from trained extraction mastery passives. Enable this if you have the relevant masteries leveled — it stacks multiplicatively with the Oghmir bonus (about +9.2% combined).">
 			<label>Masteries (+6% ore yield):</label>
 			<div class="grid-select option-grid">
 				<div
@@ -275,7 +279,7 @@
 			</div>
 		</div>
 
-		<div class="option-item">
+		<div class="option-item" title="Lets the calculator substitute catalysts and simple materials (like Water, Nitre, Sulfur, Bor) with vendor purchases instead of requiring you to gather or craft them yourself. Turn off to force fully self-sufficient production.">
 			<label>Use Vendor Materials:</label>
 			<div class="grid-select option-grid">
 				<div
@@ -290,7 +294,7 @@
 	</div>
 
 	<div class="input-group-options">
-		<div class="option-item">
+		<div class="option-item" title="Excludes hard-to-find rare materials (Calspar, Waterstone) from the production path, even if using them would be more efficient. Turn off to allow the calculator to route through these rarer materials.">
 			<label>Limit Rare Materials:</label>
 			<div class="grid-select option-grid">
 				<div
@@ -303,7 +307,7 @@
 			</div>
 		</div>
 
-		<div class="option-item">
+		<div class="option-item" title="Picks the production path that yields the highest estimated market value per craft instead of the highest raw output quantity. Useful for minimizing cost, but this feature is still in beta and may not always find the true cheapest route.">
 			<label>Optimize by value:</label>
 			<div class="grid-select option-grid">
 				<div
@@ -349,6 +353,9 @@
 
 	<button on:click={handleCalculate}>Calculate</button>
 
+	</div>
+
+	<div class="calc-outputs">
 	{#if results.length > 0}
 		{#each results as path}
 			<div class="result">
@@ -357,6 +364,9 @@
 			</div>
 		{/each}
 	{/if}
+	</div>
+
+	</div>
 </main>
 
 <style>
@@ -371,6 +381,25 @@
 		max-width: 800px;
 		margin: 0 auto;
 		padding: 2rem;
+	}
+
+	main.split-layout {
+		max-width: 1400px;
+	}
+
+	.calc-columns {
+		display: block;
+	}
+
+	main.split-layout .calc-columns {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: 2rem;
+		align-items: start;
+	}
+
+	.calc-outputs {
+		min-width: 0;
 	}
 
 	h1 {
@@ -422,6 +451,10 @@
 		padding: 1rem;
 		background-color: var(--surface);
 		border-radius: 4px;
+	}
+
+	main.split-layout .calc-outputs .result:first-child {
+		margin-top: 0;
 	}
 
 	.result h2 {

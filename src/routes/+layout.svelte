@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { calcLayout } from '$lib/calcLayout';
 
   const themes = ['dark', 'light', 'parchment', 'midnight', 'dracula', 'ayu', 'cream', 'cyberpunk'] as const;
   type Theme = (typeof themes)[number];
@@ -15,6 +16,7 @@
       currentTheme = 'dark';
     }
     document.documentElement.setAttribute('data-theme', currentTheme);
+    calcLayout.init();
   });
 
   function applyTheme(t: Theme) {
@@ -44,6 +46,15 @@
       {/each}
     </div>
   {/if}
+
+  <button
+    class="theme-toggle layout-toggle"
+    class:active={$calcLayout === 'split'}
+    on:click={() => calcLayout.toggle()}
+    title="Switch layout: inputs on the left, results on the right (Shopping List &amp; What Can I Make? only)"
+  >
+    &#9636;
+  </button>
 </div>
 
 <style>
@@ -177,6 +188,16 @@
 
   .theme-toggle:hover {
     border-color: var(--accent);
+  }
+
+  .layout-toggle {
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+  }
+
+  .layout-toggle.active {
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   .theme-menu {

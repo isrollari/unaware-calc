@@ -11,7 +11,7 @@
     let showResultModal = false;
     let requiredResources: Set<string> = new Set();
 
-    let quantity = 1;
+    let quantity = 10000;
     let isOghmir = false;
     let hasMasteries = false;
     let useVendor = true;
@@ -240,7 +240,7 @@
                 </div>
 
     <div class="input-group-options">
-        <div class="option-item">
+        <div class="option-item" title="Oghmir characters get a passive +3% bonus to ore yield when extracting resources. Enable this if your character is Oghmir so the calculator accounts for the extra ore produced per extraction.">
             <label>Oghmir clade (+3% ore yield):</label>
             <div class="grid-select option-grid">
                 <div
@@ -253,7 +253,7 @@
         </div>
         </div>
 
-        <div class="option-item">
+        <div class="option-item" title="Adds a +6% ore yield bonus from trained extraction mastery passives. Enable this if you have the relevant masteries leveled — it stacks multiplicatively with the Oghmir bonus (about +9.2% combined).">
             <label>Masteries (+6% ore yield):</label>
             <div class="grid-select option-grid">
                 <div
@@ -266,7 +266,7 @@
             </div>
         </div>
 
-        <div class="option-item">
+        <div class="option-item" title="Lets the calculator substitute catalysts and simple materials (like Water, Nitre, Sulfur, Bor) with vendor purchases instead of requiring you to gather or craft them yourself. Turn off to force fully self-sufficient production.">
             <label>Use Vendor Materials:</label>
             <div class="grid-select option-grid">
                 <div
@@ -281,7 +281,7 @@
     </div>
 
     <div class="input-group-options">
-        <div class="option-item">
+        <div class="option-item" title="Excludes hard-to-find rare materials (Calspar, Waterstone) from the production path, even if using them would be more efficient. Turn off to allow the calculator to route through these rarer materials.">
             <label>Limit Rare Materials:</label>
             <div class="grid-select option-grid">
                 <div
@@ -294,7 +294,7 @@
             </div>
         </div>
 
-        <div class="option-item">
+        <div class="option-item" title="Picks the production path that yields the highest estimated market value per craft instead of the highest raw output quantity. Useful for minimizing cost, but this feature is still in beta and may not always find the true cheapest route.">
             <label>Optimize by value:</label>
             <div class="grid-select option-grid">
                 <div
