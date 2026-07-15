@@ -24,7 +24,7 @@
     <a href="/tc-housing" class="grid-item">
       <span class="item-text">TC Housing Prices</span>
       <p class="item-tagline">"How much does it cost to build X?"</p>
-      <p class="item-description">Look up the wood, stone, metal, gold, and promethium costs for every Territory Control structure, organized by building type and tier.</p>
+      <p class="item-description">Look up the wood, stone, metal, gold, and Prominence costs for every Territory Control structure, organized by building type and tier.</p>
     </a>
 
   </div>

@@ -114,7 +114,7 @@
 
 <main>
 	<h1>TC Housing Material Prices</h1>
-	<p class="page-subtitle">Build costs for Territory Control structures — wood, stone, metal, gold, and promethium per tier.</p>
+	<p class="page-subtitle">Build costs for Territory Control structures — wood, stone, metal, gold, and Prominence per tier.</p>
 
 	<div class="main-page-link">
 		<a href="/" class="back-btn">
