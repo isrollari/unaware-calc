@@ -166,12 +166,16 @@ const resourceImageMap = new Map<string, string>([
   </div>
 
   <div class="calc-outputs">
+  <div class="output-panel">
   {#if result}
     <div class="result">
       <h2>Result:</h2>
       <pre>{result}</pre>
     </div>
+  {:else if $calcLayout === 'split'}
+    <p class="output-placeholder">Your results will appear here.<br />Set your options and click Calculate.</p>
   {/if}
+  </div>
   </div>
 
   </div>
@@ -208,6 +212,36 @@ const resourceImageMap = new Map<string, string>([
 
   .calc-outputs {
     min-width: 0;
+  }
+
+  main.split-layout .calc-outputs {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+  }
+
+  main.split-layout .output-panel {
+    background-color: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main.split-layout .output-panel .result {
+    background: none;
+    padding: 0;
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .output-placeholder {
+    margin: auto;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.6;
   }
 
   h1 {
@@ -291,10 +325,6 @@ const resourceImageMap = new Map<string, string>([
     padding: 1rem;
     background-color: var(--surface);
     border-radius: 4px;
-  }
-
-  main.split-layout .calc-outputs .result:first-child {
-    margin-top: 0;
   }
 
   .result h2 {
