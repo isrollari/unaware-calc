@@ -1,0 +1,60 @@
+Structure,Upkeep Silver,Upkeep Cuprum,Upkeep Prom
+Alchemist Apothecary T1,50,0,120
+Alchemist Apothecary T2,100,0,144
+Alchemist Apothecary T3,200,0,168
+Alert Tower T1,50,0,96
+Alert Tower T2,100,0,144
+Alert Tower T3,200,0,192
+Bank T1,500,0,240
+Bank T2,750,0,288
+Bank T3,1000,0,336
+Barracks T1,500,0,240
+Barracks T2,1000,0,288
+Barracks T3,1500,0,336
+Butchery T1,100,0,96
+Butchery T2,150,0,96
+Butchery T3,200,0,96
+Campodon Statue,2,4,0
+Chancery T1,25,0,0
+Chancery T2,50,0,0
+Chancery T3,75,0,0
+Culinarium T1,50,0,72
+Culinarium T2,100,0,72
+Culinarium T3,150,0,72
+Foundry T1,100,0,96
+Foundry T2,250,0,144
+Foundry T3,500,0,240
+General Store T1,50,0,144
+General Store T2,100,0,192
+General Store T3,200,0,240
+Guard Tower T1,1000,0,288
+Guard Tower T2,1250,0,384
+Guard Tower T3,1500,0,423
+Library T1,100,0,120
+Library T2,250,0,192
+Library T3,500,0,240
+Magic Emporium T1,100,0,72
+Magic Emporium T2,200,0,120
+Magic Emporium T3,300,0,192
+Pig Statue,2,4,0
+Red Priest,500,0,360
+Blue Priest T1,200,0,96
+Blue Priest T2,300,0,96
+Blue Priest T3,400,0,144
+Reliquary,1000,0,720
+Smithy T1,100,0,96
+Smithy T2,150,0,120
+Smithy T3,200,0,144
+Stable T1,100,0,192
+Stable T2,200,0,240
+Stable T3,300,0,312
+Stone Refinery T1,100,0,120
+Stone Refinery T2,150,0,144
+Stone Refinery T3,200,0,168
+Supply Line,100,0,24
+Supply Storehouse,50,0,24
+Supply Tower,0,0,0
+Bulwark Statue,2,4,0
+Burster Lamp,2,4,0
+Disgorger Statue,2,4,0
+Tagmaton Campsite,2,4,0
